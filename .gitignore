@@ -28,5 +28,11 @@
 
 # Executables
 *.exe
+*.o
 *.out
 *.app
+
+# Generated files
+*.pdf
+*.DS_Store
+*.vscode
