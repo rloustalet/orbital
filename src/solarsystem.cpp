@@ -20,9 +20,9 @@ void SolarSystem::solve(double h,double t){
     double force;
     double m;
 
-    vector<double>position {0, 0, 0};
-    vector<double>vitesse {0, 0, 0};
-    vector<double>acceleration {0, 0, 0};
+    vector<double>position(3,0);
+    vector<double>vitesse(3,0);
+    vector<double>acceleration(3,0);
 
     for(int i=0;i<=steps;i++)
     {
