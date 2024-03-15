@@ -11,13 +11,11 @@ double v;
 double a;
 //double RK4(double x,double v,double a,double h,double force,double m)
 x=RK4(147098290E3,0,9025486703,3600,-5.391464737E34,5.9736E24);
-cout<<"x = "<<x<<endl;
-//cout<<"v = "<<x<<endl;
+cout<<"v= "<<x<<endl;
 //double Verlet(double x,double v,double a,double h,double force,double m )
 x=Verlet(147098290E3,0,9025486703,3600,-5.391464737E34,5.9736E24 );
-cout<<"x = "<<x<<endl;
-//cout<<"v = "<<x<<endl; 
-//cout<<"a = "<<x<<endl;
+cout<<"v = "<<x<<endl;
+
 
 
 //double norme(vector<double>& vect)

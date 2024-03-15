@@ -27,7 +27,7 @@ double k4v=force/m+h*k3v;
 x+=(h/6)*(k1x+2*k2x+2*k3x+k4x);
 v+=(h/6)*(k1v+2*k2v+2*k3v+k4v);
 
-return x;
+return v;
 
 }
 
@@ -37,12 +37,12 @@ double Verlet(double x,double v,double a,double h,double force,double m )
 //v(t+h/2)=v(t)+a(t)*h/2
 //a(t+h)=
 //v(t+h)=v(t+h/2)+a(t+h)*h/2
+a+=force/m;
 x+=v*h+(1/2)*a*(h*h);
 v+=a*(h/2);
-a+=force/m;
 v=v+(a*h)/2;
 
-return x;
+return v;
 }
 //norme
 double norme(vector<double>& vect)
