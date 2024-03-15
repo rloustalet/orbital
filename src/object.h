@@ -30,6 +30,7 @@ class Object {
         void setAcceleration(std::vector<double>& acc);
         void setMass(double m);
 
+        double distance(const Object& obj);
         double gravForce(const Object& obj);
         double kineticEnergy();
         double potentialEnergy(const Object& obj);

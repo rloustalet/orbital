@@ -13,7 +13,7 @@ $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -c $<
 
 testing:
-	g++ -o test/test_object.o test/test_object.cpp src/object.cpp -I./src
+	g++ -o test/test_object.o test/test_object.cpp src/object.cpp src/util.cpp -I./src
 	./test/test_object.o
 	g++ -o test/test_util.o test/test_util.cpp src/util.cpp -I./src
 	./test/test_util.o

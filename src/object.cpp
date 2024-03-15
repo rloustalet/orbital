@@ -1,4 +1,5 @@
 #include "object.h"
+#include "util.h"
 
 Object::Object(const std::string& n, std::vector<double>& pos, std::vector<double>& spd,
 std::vector<double>& acc, double m) : name(n), position(pos),
@@ -53,8 +54,15 @@ void Object::setMass(double m) {
 }
 
 double Object::gravForce(const Object& obj) {
-    double force = 6.67408E-11 * mass * obj.getMass();
+    double force = 6.67408E-11 * mass * obj.getMass() / distance(obj) / distance(obj);
     return force;
+}
+
+double Object::distance(const Object& obj){
+    std::vector<double> objPosition = obj.getPosition();
+    double scalPosThis = norme(position);
+    double scalPosObj = norme(objPosition);
+    return scalPosObj - scalPosThis;
 }
 
 double Object::kineticEnergy() {
@@ -63,7 +71,7 @@ double Object::kineticEnergy() {
 }
 
 double Object::potentialEnergy(const Object& obj) {
-    double potential = -6.67408E-11 * mass * obj.getMass();
+    double potential = -6.67408E-11 * mass / distance(obj) / distance(obj);
     return potential;
 }
 
