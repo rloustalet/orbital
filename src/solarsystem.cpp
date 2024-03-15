@@ -6,7 +6,7 @@
 
 
 using namespace std;
-SolarSystem::SolarSystem(const string& n,const vector<Object>& objects): name(n), objects(objects) {
+SolarSystem::SolarSystem(const std::string& n,const vector<Object>& objs): name(n), objects(objs) {
     this->name=n;
     this->objects=objects;
 }
@@ -20,9 +20,9 @@ void SolarSystem::solve(double h,double t){
     double force;
     double m;
 
-    vector<double>position;
-    vector<double>vitesse;
-    vector<double>acceleration;
+    vector<double>position {0, 0, 0};
+    vector<double>vitesse {0, 0, 0};
+    vector<double>acceleration {0, 0, 0};
 
     for(int i=0;i<=steps;i++)
     {
