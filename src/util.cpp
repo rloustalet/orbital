@@ -1,7 +1,11 @@
 #include "util.h"
+#include <vector>
+#include <cmath>
+#include <iostream>
+
 using namespace std;
 
-double RK4(double x,double v,double a,double h,double force,double m,double t )
+double RK4(double x,double v,double a,double h,double force,double m)
 {
 //Pour la position  x(t)=v(t)*t+x_0 -> v(t,x)=x(t)/t-x_0/t
 //Pour la vitesse   v(t)=a(t)*t+v_0
@@ -40,3 +44,9 @@ v=v+(a*h)/2;
 
 return x;
 }
+//norme
+double norme(vector<double>& vect)
+{
+return sqrt(vect[0]*vect[0]+vect[1]*vect[1]+vect[2]*vect[2]) ;
+}
+
