@@ -3,8 +3,8 @@
 #include "src/solarsystem.h"
 
 int main(){
-    double h = 1 * 3600;
-    double t = 365 * 24 * 3600;
+    double h = 24 * 3600;
+    double t = 3650 * 24 * 3600;
 
     std::vector<double> positionSun;
     positionSun.push_back(0);
