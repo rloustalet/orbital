@@ -16,6 +16,8 @@ class SolarSystem {
     public:
         SolarSystem(const string& n,const vector<Object>& objects); //on a dit que c t des arg de la classe SolarSystem
         void solve(double h, double t);
+        void exportdata();
+        void verlet(Object obj, double h);
 
 
 };

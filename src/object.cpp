@@ -54,15 +54,15 @@ void Object::setMass(double m) {
 }
 
 double Object::gravForce(const Object& obj) {
-    double force = 6.67408E-11 * mass * obj.getMass() / distance(obj) / distance(obj);
+    double force = -6.67408E-11 * mass * obj.getMass() / distance(obj) / distance(obj);
     return force;
 }
 
 double Object::distance(const Object& obj){
     std::vector<double> objPosition = obj.getPosition();
-    double scalPosThis = norme(position);
-    double scalPosObj = norme(objPosition);
-    return scalPosObj - scalPosThis;
+    return(sqrt(pow(position[0]-objPosition[0],2)+
+            pow(position[1]-objPosition[1],2)+
+            pow(position[2]-objPosition[2],2)));
 }
 
 double Object::kineticEnergy() {
@@ -74,4 +74,5 @@ double Object::potentialEnergy(const Object& obj) {
     double potential = -6.67408E-11 * mass / distance(obj) / distance(obj);
     return potential;
 }
+
 

@@ -31,19 +31,7 @@ return v;
 
 }
 
-double Verlet(double x,double v,double a,double h,double force,double m )
-{
-//x(t+h)=x(t)+v(t)*h+1/2*a(t)*h**2
-//v(t+h/2)=v(t)+a(t)*h/2
-//a(t+h)=
-//v(t+h)=v(t+h/2)+a(t+h)*h/2
-a+=force/m;
-x+=v*h+(1/2)*a*(h*h);
-v+=a*(h/2);
-v=v+(a*h)/2;
 
-return v;
-}
 //norme
 double norme(vector<double>& vect)
 {

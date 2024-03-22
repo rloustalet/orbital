@@ -3,7 +3,7 @@
 #include "src/solarsystem.h"
 
 int main(){
-    double h = 12 * 3600;
+    double h = 1 * 3600;
     double t = 365 * 24 * 3600;
 
     std::vector<double> positionSun;
@@ -26,13 +26,18 @@ int main(){
     speedSun.push_back(0);
     speedSun.push_back(0);
 
-    std::vector<double> acceleration;
-    acceleration.push_back(0);
-    acceleration.push_back(0);
-    acceleration.push_back(0);
+    std::vector<double> accelerationSun;
+    accelerationSun.push_back(0);
+    accelerationSun.push_back(0);
+    accelerationSun.push_back(0);
+
+    std::vector<double> accelerationEarth;
+    accelerationEarth.push_back(6.11E-3);
+    accelerationEarth.push_back(0);
+    accelerationEarth.push_back(0);
     
-    Object sun("Sun", positionSun, speedSun, acceleration, 1.9891E30);
-    Object earth("Earth", positionEarth, speedEarth, acceleration, 5.9736E24);
+    Object sun("Sun", positionSun, speedSun, accelerationSun, 1.9891E30);
+    Object earth("Earth", positionEarth, speedEarth, accelerationEarth, 5.9736E24);
 
     std::vector<Object> objects;
     objects.push_back(sun);
