@@ -92,7 +92,6 @@ cout << "acceleration << " << force[0]/obj1.getMass() << " " << force[1]/obj1.ge
 cout << "norme force << " << sqrt(force[0]*force[0]+force[1]*force[1]+force[2]*force[2]) << endl;
 }
 
-
 double SolarSystem::fonctionvitesse(double force,double t,double m,double vitesseinit)
 {
     return t*force/m + vitesseinit ;
@@ -133,6 +132,8 @@ acceleration[0] = vitesse[0]/h;
 acceleration[1] = vitesse[1]/h;
 acceleration[2] = vitesse[2]/h;
 
+acceleration[2] = vitesse[2]/h;
+
 obj1.setAcceleration(acceleration);
 
 positioninit[0] += h*vitesse[0];
@@ -145,5 +146,6 @@ obj1.setPosition(positioninit);
 
 bool SolarSystem::isStar(Object* obj) {
     return dynamic_cast<Object*>(obj) != nullptr;
+
 }
 
