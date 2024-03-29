@@ -31,7 +31,7 @@ class Object {
         void setMass(double m);
 
         double distance(const Object& obj);
-        double gravForce(const Object& obj);
+        std::vector<double> gravForce(const Object& obj);
         double kineticEnergy();
         double potentialEnergy(const Object& obj);
 

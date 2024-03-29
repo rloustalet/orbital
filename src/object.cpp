@@ -1,5 +1,6 @@
 #include "object.h"
 #include "util.h"
+#include <iostream>
 
 Object::Object(const std::string& n, std::vector<double>& pos, std::vector<double>& spd,
 std::vector<double>& acc, double m) : name(n), position(pos),
@@ -53,8 +54,16 @@ void Object::setMass(double m) {
     mass = m;
 }
 
-double Object::gravForce(const Object& obj) {
-    double force = -6.67408E-11 * mass * obj.getMass() / distance(obj) / distance(obj);
+std::vector<double> Object::gravForce(const Object& obj) {
+    std::cout << "distance : " << distance(obj) << std::endl;
+    double cos_theta = (obj.getPosition()[0] - position[0]) / distance(obj);
+    double sin_theta = (obj.getPosition()[1] - position[1]) / distance(obj);
+    double cos_phi = (obj.getPosition()[2] - position[2]) / distance(obj);
+    double sin_phi = sqrt(1 - cos_phi * cos_phi);
+    std::vector<double> force;
+    force.push_back((6.67408E-11 * mass * obj.getMass() * cos_theta * sin_phi) / pow(distance(obj), 2));
+    force.push_back((6.67408E-11 * mass * obj.getMass() * sin_theta * sin_phi) / pow(distance(obj), 2));
+    force.push_back((6.67408E-11 * mass * obj.getMass() * cos_phi) / pow(distance(obj), 2));
     return force;
 }
 
