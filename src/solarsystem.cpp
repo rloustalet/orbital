@@ -32,7 +32,7 @@ void SolarSystem::solve(string algo, double h,double t){
             subobjects.erase(subobjects.begin() + j);
             for (Object obj2 : subobjects) {
                 if (algo == "RK4") {
-                    RK4(objects[j], obj2, h);
+                    RK4(objects[j], obj2, h, h*i);
                 }
                 else if (algo == "verlet") {
                     verlet(objects[j], obj2, h);
@@ -53,7 +53,8 @@ void SolarSystem::exportdata(Object obj){
     string name = obj.getName() + ".csv";
     outfile.open(name, std::ios_base::app);
     outfile << obj.getName() << " " << obj.getPosition()[0] << " " 
-    << obj.getPosition()[1] << " " << obj.getPosition()[2] << std::endl;
+    << obj.getPosition()[1] << " " << obj.getPosition()[2] << obj.getSpeed()[0] << " " 
+    << obj.getSpeed()[1] << " " << obj.getSpeed()[2]<<std::endl;
     outfile.close();
 }
 
@@ -88,55 +89,54 @@ cout << "acceleration << " << force[0]/obj1.getMass() << " " << force[1]/obj1.ge
 cout << "norme force << " << sqrt(force[0]*force[0]+force[1]*force[1]+force[2]*force[2]) << endl;
 }
 
-void SolarSystem::RK4(Object &obj1, Object obj2, double h)
+double SolarSystem::fonctionvitesse(double force,double t,double m,double vitesseinit)
+{
+    return t*force/m + vitesseinit ;
+}
+
+void SolarSystem::RK4(Object &obj1, Object obj2, double h,double t)
 {
 std::vector<double>positioninit = obj1.getPosition();
-std::vector<double>position1 = obj1.getPosition();
-std::vector<double>position2 = obj1.getPosition();
-std::vector<double>position3 = obj1.getPosition();
+
 std::vector<double>vitesseinit = obj1.getSpeed();
 std::vector<double>vitesse = obj1.getSpeed();
 std::vector<double>acceleration = obj1.getAcceleration();
 
 std::vector<double>force = obj1.gravForce(obj2);
 
-double k0 = h*force[0]/obj1.getMass();
-double l0 = h*force[1]/obj1.getMass();
+double vx0 = fonctionvitesse(force[0],h,obj1.getMass(),vitesseinit[0]);
+double vy0 = fonctionvitesse(force[1],h,obj1.getMass(),vitesseinit[1]);
+double vz0 = fonctionvitesse(force[2],h,obj1.getMass(),vitesseinit[2]);
 
-position1[0] += 0.5*k0*h;
-position1[1] += 0.5*l0*h;
-obj1.setPosition(position1);
+double vx1 = fonctionvitesse(force[0]+0.5*h*vx0,h+0.5*h,obj1.getMass(),vitesseinit[0]);
+double vy1 = fonctionvitesse(force[1]+0.5*h*vy0,h+0.5*h,obj1.getMass(),vitesseinit[1]);
+double vz1 = fonctionvitesse(force[2]+0.5*h*vz0,h+0.5*h,obj1.getMass(),vitesseinit[2]);
 
-std::vector<double>force2 = obj1.gravForce(obj2);
-double k1 = 0.5*h*force2[0]/obj1.getMass();
-double l1 = 0.5*h*force2[1]/obj1.getMass();
+double vx2 = fonctionvitesse(force[0]+0.5*h*vx1,h+0.5*h,obj1.getMass(),vitesseinit[0]);
+double vy2 = fonctionvitesse(force[1]+0.5*h*vy1,h+0.5*h,obj1.getMass(),vitesseinit[1]);
+double vz2 = fonctionvitesse(force[2]+0.5*h*vz1,h+0.5*h,obj1.getMass(),vitesseinit[2]);
 
-position2[0] += 0.5*k1*h;
-position2[1] += 0.5*l1*h;
-obj1.setPosition(position2);
+double vx3 = fonctionvitesse(force[0]+h*vx2,h+h,obj1.getMass(),vitesseinit[0]);
+double vy3 = fonctionvitesse(force[1]+h*vy2,h+h,obj1.getMass(),vitesseinit[1]);
+double vz3 = fonctionvitesse(force[2]+h*vz2,h+h,obj1.getMass(),vitesseinit[2]);
 
-std::vector<double>force3 = obj1.gravForce(obj2);
-double k2 = 0.5*h*force3[0]/obj1.getMass();
-double l2 = 0.5*h*force3[1]/obj1.getMass();
 
-position3[0] += k2*h;
-position3[1] += l2*h;
-obj1.setPosition(position3);
-
-std::vector<double>force4 = obj1.gravForce(obj2);
-double k3 = h*force4[0]/obj1.getMass();
-double l3 = h*force4[1]/obj1.getMass();
-
-vitesse[0] = (k0 + 2*k1 + 2*k2 + k3)/6;
-vitesse[1] = (l0 + 2*l1 + 2*l2 + l3)/6;
+vitesse[0] = (vx0 + 2*vx1 + 2*vx2 + vx3)/6;
+vitesse[1] = (vy0 + 2*vy1 + 2*vy2 + vy3)/6;
+vitesse[2] = (vz0 + 2*vz1 + 2*vz2 + vz3)/6;
 obj1.setSpeed(vitesse);
 
 acceleration[0] = vitesse[0]/h;
 acceleration[1] = vitesse[1]/h;
+acceleration[2] = vitesse[2]/h;
+
 obj1.setAcceleration(acceleration);
 
-positioninit[0] += vitesseinit[0]*h;
-positioninit[1] += vitesseinit[1]*h;
+positioninit[0] += h*vitesse[0];
+positioninit[1] += h*vitesse[1];
+positioninit[2] += h*vitesse[2];
+
 obj1.setPosition(positioninit);
+
 }
 

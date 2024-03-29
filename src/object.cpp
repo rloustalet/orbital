@@ -1,5 +1,6 @@
 #include "object.h"
 #include "util.h"
+#include <cmath>
 #include <iostream>
 
 Object::Object(const std::string& n, std::vector<double>& pos, std::vector<double>& spd,

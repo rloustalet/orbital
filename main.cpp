@@ -5,7 +5,7 @@
 
 int main(){
     double h = 0.5 * 3600;
-    double t = 1 * 365 * 24 * 3600;
+    double t =  2 * 365 * 24 * 3600;
 
     std::vector<double> positionSun;
     positionSun.push_back(0);
