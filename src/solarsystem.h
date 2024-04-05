@@ -13,6 +13,7 @@ class SolarSystem {
         string name;
         vector<Object> objects; 
         double fonctionvitesse(double force,double t,double m,double vitesseinit);
+        double fonctionvitesse(double force,double t,double m,double vitesseinit);
 
     public:
         SolarSystem(const string& n,const vector<Object>& objects); //on a dit que c t des arg de la classe SolarSystem
