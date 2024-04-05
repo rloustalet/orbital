@@ -32,7 +32,7 @@ void SolarSystem::solve(string algo, double h,double t){
             for (Object obj2 : subobjects) {
                 std::cout << obj2.getName() << std::endl;
                 if (algo == "RK4") {
-                    RK4(objects[j], obj2, h);
+                    RK4(objects[j], obj2, h, h*i);
                 }
                 else if (algo == "verlet") {
                     verlet(objects[j], obj2, h);
@@ -92,7 +92,6 @@ cout << "acceleration << " << force[0]/obj1.getMass() << " " << force[1]/obj1.ge
 cout << "norme force << " << sqrt(force[0]*force[0]+force[1]*force[1]+force[2]*force[2]) << endl;
 }
 
-
 double SolarSystem::fonctionvitesse(double force,double t,double m,double vitesseinit)
 {
     return t*force/m + vitesseinit ;
@@ -122,6 +121,22 @@ double vz2 = fonctionvitesse(force[2]+0.5*h*vz1,h+0.5*h,obj1.getMass(),vitesse[2
 double vx3 = fonctionvitesse(force[0]+h*vx2,h+h,obj1.getMass(),vitesse[0]);
 double vy3 = fonctionvitesse(force[1]+h*vy2,h+h,obj1.getMass(),vitesse[1]);
 double vz3 = fonctionvitesse(force[2]+h*vz2,h+h,obj1.getMass(),vitesse[2]);
+=======
+double vx0 = fonctionvitesse(force[0],h,obj1.getMass(),vitesseinit[0]);
+double vy0 = fonctionvitesse(force[1],h,obj1.getMass(),vitesseinit[1]);
+double vz0 = fonctionvitesse(force[2],h,obj1.getMass(),vitesseinit[2]);
+
+double vx1 = fonctionvitesse(force[0]+0.5*h*vx0,h+0.5*h,obj1.getMass(),vitesseinit[0]);
+double vy1 = fonctionvitesse(force[1]+0.5*h*vy0,h+0.5*h,obj1.getMass(),vitesseinit[1]);
+double vz1 = fonctionvitesse(force[2]+0.5*h*vz0,h+0.5*h,obj1.getMass(),vitesseinit[2]);
+
+double vx2 = fonctionvitesse(force[0]+0.5*h*vx1,h+0.5*h,obj1.getMass(),vitesseinit[0]);
+double vy2 = fonctionvitesse(force[1]+0.5*h*vy1,h+0.5*h,obj1.getMass(),vitesseinit[1]);
+double vz2 = fonctionvitesse(force[2]+0.5*h*vz1,h+0.5*h,obj1.getMass(),vitesseinit[2]);
+
+double vx3 = fonctionvitesse(force[0]+h*vx2,h+h,obj1.getMass(),vitesseinit[0]);
+double vy3 = fonctionvitesse(force[1]+h*vy2,h+h,obj1.getMass(),vitesseinit[1]);
+double vz3 = fonctionvitesse(force[2]+h*vz2,h+h,obj1.getMass(),vitesseinit[2]);
 
 
 vitesse[0] = (vx0 + 2*vx1 + 2*vx2 + vx3)/6;
