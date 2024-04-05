@@ -12,7 +12,7 @@ class Object {
         std::vector<double> acceleration;
         std::vector<double> force;
         double mass;
-        std::vector<double> potentialEnergyVect;
+        double potentialEnergy;
 
 
     public:
@@ -31,11 +31,13 @@ class Object {
         void setAcceleration(std::vector<double>& acc);
         void setMass(double m);
 
+        void computeAcceleration(std::vector<Object>& objects);
+        std::vector<double> distanceVect(Object obj);
         double distance(const Object& obj);
         std::vector<double> gravForce(const Object& obj);
         double kineticEnergy();
-        void potentialEnergy(Object obj);
-        double totalEnergy(Object obj);
+        void computePotentialEnergy(std::vector<Object>& objects);
+        double totalEnergy();
         void clearPotentialEnergy();
 
     

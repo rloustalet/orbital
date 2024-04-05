@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <string>
 #include "src/object.h"
 #include "src/solarsystem.h"
 #include "src/planet.h"
@@ -7,17 +8,17 @@
 
 int main(){
     double h = 0.5 * 3600;
-    double t =  2 * 365 * 24 * 3600;
+    double t =  20 * 365 * 24 * 3600;
 
     std::vector<double> positionSun;
-    positionSun.push_back(-1.068108951496322E9);
-    positionSun.push_back(-4.177210908491462E8);
-    positionSun.push_back(3.086887010002915E7);
+    positionSun.push_back(0);
+    positionSun.push_back(0);
+    positionSun.push_back(0);
 
     std::vector<double> positionEarth;
-    positionEarth.push_back(-2.627903751048988E10);
-    positionEarth.push_back(1.445101984929515E11);
-    positionEarth.push_back(3.025245352813601E7);
+    positionEarth.push_back(147098290E3);
+    positionEarth.push_back(0);
+    positionEarth.push_back(0);
 
     std::vector<double> positionJupiter;
     positionJupiter.push_back(778500000E3);
@@ -30,14 +31,14 @@ int main(){
     positionSaturn.push_back(0);
 
     std::vector<double> speedEarth;
-    speedEarth.push_back(-2.983052803412253E4);
-    speedEarth.push_back(-5.220465675237847E3);
-    speedEarth.push_back(-1.014855999592612E-1);
+    speedEarth.push_back(0);
+    speedEarth.push_back(30287);
+    speedEarth.push_back(0);
 
     std::vector<double> speedSun;
-    speedSun.push_back(9.305302656256911);
-    speedSun.push_back(-1.283177282717393E1);
-    speedSun.push_back(-1.631700118015769E-1);
+    speedSun.push_back(0);
+    speedSun.push_back(0);
+    speedSun.push_back(0);
 
     std::vector<double> speedJupiter;
     speedJupiter.push_back(0);
@@ -56,17 +57,17 @@ int main(){
 
     std::vector<double> accelerationEarth;
     accelerationEarth.push_back(0);
-    accelerationEarth.push_back(speedEarth[1] * speedEarth[1] / positionEarth[0]);
+    accelerationEarth.push_back(0);
     accelerationEarth.push_back(0);
 
     std::vector<double> accelerationJupiter;
     accelerationJupiter.push_back(0);
-    accelerationJupiter.push_back(speedJupiter[1] * speedJupiter[1] / positionJupiter[0]);
+    accelerationJupiter.push_back(0);
     accelerationJupiter.push_back(0);
 
     std::vector<double> accelerationSaturn;
     accelerationSaturn.push_back(0);
-    accelerationSaturn.push_back(speedSaturn[1] * speedSaturn[1] / positionSaturn[0]);
+    accelerationSaturn.push_back(0);
     accelerationSaturn.push_back(0);
 
 
@@ -82,11 +83,11 @@ int main(){
     std::vector<Object> objects;
     objects.push_back(sun);
     objects.push_back(earth);
-    //objects.push_back(jupiter);
-    //objects.push_back(saturn);
+    objects.push_back(jupiter);
+    objects.push_back(saturn);
 
     SolarSystem solarsystem("système solaire",objects);
-    solarsystem.solve("RK4",h, t);
+    solarsystem.solve("rk4",h, t);
 
 }
 

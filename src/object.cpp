@@ -55,20 +55,32 @@ void Object::setMass(double m) {
 }
 
 std::vector<double> Object::gravForce(const Object& obj) {
-    std::cout << "distance : " << distance(obj) << std::endl;
-    double cos_theta = (obj.getPosition()[0] - position[0]) / sqrt(pow(obj.getPosition()[0] - position[0], 2) + 
-                                                                    pow(obj.getPosition()[1] - position[1], 2));
-    double sin_theta = (obj.getPosition()[1] - position[1]) / sqrt(pow(obj.getPosition()[0] - position[0], 2) + 
-                                                                    pow(obj.getPosition()[1] - position[1], 2));
-    double cos_phi = (obj.getPosition()[2] - position[2]) / distance(obj);
-    double sin_phi = sqrt(1 - cos_phi * cos_phi);
-    std::vector<double> force;
-    force.push_back((6.67408E-11 * mass * obj.getMass() * cos_theta * sin_phi) / pow(distance(obj), 2));
-    force.push_back((6.67408E-11 * mass * obj.getMass() * sin_theta * sin_phi) / pow(distance(obj), 2));
-    force.push_back((6.67408E-11 * mass * obj.getMass() * cos_phi) / pow(distance(obj), 2));
+    std::vector<double> distVect = distanceVect(obj);
+    std::vector<double> force(3);
+    force[0] -= 6.67408E-11 * mass * obj.getMass() * distVect[0] / pow(distance(obj), 3);
+    force[1] -= 6.67408E-11 * mass * obj.getMass() * distVect[1] / pow(distance(obj), 3);
+    force[2] -= 6.67408E-11 * mass * obj.getMass() * distVect[2] / pow(distance(obj), 3);
     return force;
 }
 
+void Object::computeAcceleration(std::vector<Object>& objects) {
+    std::vector<double> accel(3);
+    for(Object obj : objects) {
+        for (int l = 0; l<=2; l++) {
+            accel[l] += gravForce(obj)[l] / mass;
+        }
+    }
+    setAcceleration(accel);
+}
+
+std::vector<double> Object::distanceVect(Object obj) {
+    std::vector<double> objPosition = obj.getPosition();
+    std::vector<double> distanceVect;
+    distanceVect.push_back(position[0] - objPosition[0]);
+    distanceVect.push_back(position[1] - objPosition[1]);
+    distanceVect.push_back(position[2] - objPosition[2]);
+    return distanceVect;
+}
 double Object::distance(const Object& obj){
     std::vector<double> objPosition = obj.getPosition();
     return(sqrt(pow(position[0]-objPosition[0],2)+
@@ -81,24 +93,22 @@ double Object::kineticEnergy() {
     return kinetic;
 }
 
-void Object::potentialEnergy(Object obj) {
-    double potential = sqrt(gravForce(obj)[0] * gravForce(obj)[0] +
+void Object::computePotentialEnergy(std::vector<Object>& objects) {
+    double potential;
+    for (Object obj : objects) {
+        potentialEnergy +=sqrt(gravForce(obj)[0] * gravForce(obj)[0] +
                             gravForce(obj)[1] * gravForce(obj)[1] +
                             gravForce(obj)[2] * gravForce(obj)[2])*mass*
                             distance(obj);
-    potentialEnergyVect.push_back(potential);
+    }
 }
 
 void Object::clearPotentialEnergy() {
-    potentialEnergyVect.clear();
+    potentialEnergy = 0;
 }
 
-double Object::totalEnergy(Object obj) {
-    double potEnergy;
-    for (int i = 0; i < potentialEnergyVect.size(); i++) {
-        potEnergy += potentialEnergyVect[i];
-    }
-    double total = kineticEnergy() + potEnergy;
+double Object::totalEnergy() {
+    double total = kineticEnergy() + potentialEnergy;
     return total;
 }
 
