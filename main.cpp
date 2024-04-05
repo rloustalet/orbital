@@ -86,7 +86,7 @@ int main(){
     //objects.push_back(saturn);
 
     SolarSystem solarsystem("système solaire",objects);
-    solarsystem.solve("RK4",h, t);//une demi journée en pas et 365j
+    solarsystem.solve("RK4",h, t);
 
 }
 

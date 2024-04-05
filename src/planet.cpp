@@ -5,5 +5,5 @@ std::vector<double>& acc, double m) : Object(n, pos, spd, acc, m) {}
 
 
 double Planet::area() {
-    return 0;
+    double area = 0.5 * sqrt(1);
 }

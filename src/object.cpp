@@ -56,8 +56,10 @@ void Object::setMass(double m) {
 
 std::vector<double> Object::gravForce(const Object& obj) {
     std::cout << "distance : " << distance(obj) << std::endl;
-    double cos_theta = (obj.getPosition()[0] - position[0]) / distance(obj);
-    double sin_theta = (obj.getPosition()[1] - position[1]) / distance(obj);
+    double cos_theta = (obj.getPosition()[0] - position[0]) / sqrt(pow(obj.getPosition()[0] - position[0], 2) + 
+                                                                    pow(obj.getPosition()[1] - position[1], 2));
+    double sin_theta = (obj.getPosition()[1] - position[1]) / sqrt(pow(obj.getPosition()[0] - position[0], 2) + 
+                                                                    pow(obj.getPosition()[1] - position[1], 2));
     double cos_phi = (obj.getPosition()[2] - position[2]) / distance(obj);
     double sin_phi = sqrt(1 - cos_phi * cos_phi);
     std::vector<double> force;
