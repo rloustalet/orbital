@@ -1,5 +1,5 @@
 #include "object.h"
-#include "util.h"
+#include <cmath>
 #include <iostream>
 
 Object::Object(const std::string& n, std::vector<double>& pos, std::vector<double>& spd,
@@ -79,9 +79,25 @@ double Object::kineticEnergy() {
     return kinetic;
 }
 
-double Object::potentialEnergy(const Object& obj) {
-    double potential = -6.67408E-11 * mass / distance(obj) / distance(obj);
-    return potential;
+void Object::potentialEnergy(Object obj) {
+    double potential = sqrt(gravForce(obj)[0] * gravForce(obj)[0] +
+                            gravForce(obj)[1] * gravForce(obj)[1] +
+                            gravForce(obj)[2] * gravForce(obj)[2])*mass*
+                            distance(obj);
+    potentialEnergyVect.push_back(potential);
+}
+
+void Object::clearPotentialEnergy() {
+    potentialEnergyVect.clear();
+}
+
+double Object::totalEnergy(Object obj) {
+    double potEnergy;
+    for (int i = 0; i < potentialEnergyVect.size(); i++) {
+        potEnergy += potentialEnergyVect[i];
+    }
+    double total = kineticEnergy() + potEnergy;
+    return total;
 }
 
 
