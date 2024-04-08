@@ -7,7 +7,7 @@
 #include "src/star.h"
 
 int main(){
-    double h = 12 * 3600;
+    double h = 2 * 3600;
     double t =  30 * 365 * 24 * 3600;
 
     std::vector<Object> objects;
@@ -30,7 +30,7 @@ int main(){
     solarsystem.addObjectFromHorizons("moon");
     
     
-    solarsystem.solve("rk4",h, t);
+    solarsystem.solve("euler",h, t);
 
 }
 

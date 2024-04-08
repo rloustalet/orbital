@@ -30,12 +30,35 @@ SolarSystem::SolarSystem(const std::string& n,const vector<Object>& objs): name(
  *
  * @throws None
  */
-void SolarSystem::printProgress(double percentage) {
-    int val = (int) (percentage * 100);
-    int lpad = (int) (percentage * PBWIDTH);
+void SolarSystem::printProgress(double percentage, int iterations_so_far, int total_iterations) {
+    // Calcul des valeurs pour la barre de progression
+    int val = (int)(percentage * 100);
+    int lpad = (int)(percentage * PBWIDTH);
     int rpad = PBWIDTH - lpad;
+
+    // Affichage de la barre de progression
     printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
     fflush(stdout);
+
+    // Calcul du temps écoulé
+    static clock_t start_time = 0;
+    if (start_time == 0) {
+        start_time = clock();
+    }
+    clock_t current_time = clock();
+    double elapsed_seconds = (double)(current_time - start_time) / CLOCKS_PER_SEC;
+
+    // Calcul du temps moyen par itération
+    double average_time_per_iteration = elapsed_seconds / iterations_so_far;
+
+    // Calcul du temps restant total
+    double total_predicted_time = average_time_per_iteration * total_iterations;
+
+    // Affichage du temps écoulé et du temps restant
+    printf(" | %.2fs/ %.2fs, %.2fs/iter", elapsed_seconds, total_predicted_time, average_time_per_iteration);
+    if (iterations_so_far == total_iterations) {
+        printf("\n");
+    }
 }
 /**
  * Writes data to a string and returns the size of the data written.
@@ -66,12 +89,19 @@ static size_t writeCallback(void *contents, size_t size, size_t nmemb, string *d
  */
 void SolarSystem::solve(string algo, double h,double t){
     //donne la positon de la terre et du soleil à t
+    string filename = name + ".csv";
+    if (std::remove(filename.c_str()) != 0) {
+        std::cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << std::endl;
+    }
+    else {
+        std::cout << "Le fichier " << filename << " a été supprimé avec succès." << std::endl;
+    }
     for (Object obj : objects) {
-        string name = obj.getName() + ".csv";
-        if (std::remove(name.c_str()) != 0) {
-        std::cout << "Le fichier " << name << " n'existe pas ou n'a pas pu être supprimé." << std::endl;
+        string filename = obj.getName() + ".csv";
+        if (std::remove(filename.c_str()) != 0) {
+        std::cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << std::endl;
     } else {
-        std::cout << "Le fichier " << name << " a été supprimé avec succès." << std::endl;
+        std::cout << "Le fichier " << filename << " a été supprimé avec succès." << std::endl;
     }
     }
 
@@ -81,7 +111,7 @@ void SolarSystem::solve(string algo, double h,double t){
 
     for(int i=0;i<=steps+1;i++)
     {
-        printProgress(i / steps);
+        printProgress(i / steps, i, steps+1);
         for (int j=0;j<objects.size();j++) {
             vector<Object> subobjects = objects;
             subobjects.erase(subobjects.begin() + j);
@@ -92,6 +122,9 @@ void SolarSystem::solve(string algo, double h,double t){
             else if (algo == "verlet") {
                 verlet(objects[j], subobjects, h);
             }
+            else if (algo == "euler") {
+                euler(objects[j], subobjects, h);
+            }
             else{
                 std::cout << "l'algorithme n'existe pas" << std::endl;
             }
@@ -99,6 +132,12 @@ void SolarSystem::solve(string algo, double h,double t){
             objects[j].clearPotentialEnergy();
 
         }
+        std::ofstream outfile;
+        string filename = name + ".csv";
+        outfile.open(filename, std::ios_base::app);
+        outfile << totalEnergy() << std::endl;
+        outfile.close();
+
 
     }
 }
@@ -114,8 +153,8 @@ void SolarSystem::solve(string algo, double h,double t){
  */
 void SolarSystem::exportdata(Object obj){
     std::ofstream outfile;
-    string name = obj.getName() + ".csv";
-    outfile.open(name, std::ios_base::app);
+    string filename = obj.getName() + ".csv";
+    outfile.open(filename, std::ios_base::app);
     outfile << obj.getName() << " " << obj.getPosition()[0] << " " 
     << obj.getPosition()[1] << " " << obj.getPosition()[2] << " " 
     << obj.getSpeed()[0] << " " 
@@ -263,6 +302,35 @@ obj1.setPosition(position);
 obj1.setSpeed(vitesse);
 
 
+
+}
+
+/**
+ * Updates the position and speed of an object using the Euler method.
+ *
+ * @param obj1 The object to update
+ * @param objects Other objects influencing the object
+ * @param h The time step for the update
+ *
+ * @return void
+ *
+ * @throws None
+ */
+void SolarSystem::euler(Object &obj1, std::vector<Object> objects, double h)
+{
+std::vector<double>position(3);
+std::vector<double>vitesse = obj1.getSpeed();
+std::vector<double>force(3);
+
+
+for(int k=0;k<=2;k++)
+        {
+        position[k] = position[k] + vitesse[k]*h;
+        vitesse[k] = vitesse[k] + obj1.getAcceleration()[k]*h;
+        }
+
+obj1.setPosition(position);
+obj1.setSpeed(vitesse);
 
 }
 
@@ -432,4 +500,12 @@ vector<double> SolarSystem::processPosition(const string& response) {
      */
     std::vector<Object> SolarSystem::getObjects() {
         return objects;
+    }
+
+    double SolarSystem::totalEnergy() {
+        double energy = 0.0;
+        for (Object obj : objects) {
+            energy += obj.totalEnergy();
+        }
+        return energy;
     }

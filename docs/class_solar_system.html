@@ -91,12 +91,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa4c3d9625f58f7cd21ffe98c396fb5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a798a1c1b3dfd0b6030a016ff2803dd46" id="r_a798a1c1b3dfd0b6030a016ff2803dd46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a798a1c1b3dfd0b6030a016ff2803dd46">RK4</a> (<a class="el" href="class_object.html">Object</a> &amp;obj1, vector&lt; <a class="el" href="class_object.html">Object</a> &gt; objects, double h)</td></tr>
 <tr class="separator:a798a1c1b3dfd0b6030a016ff2803dd46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac64abbac1e0a3a3971dd863941e7a5" id="r_a5ac64abbac1e0a3a3971dd863941e7a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ac64abbac1e0a3a3971dd863941e7a5">euler</a> (<a class="el" href="class_object.html">Object</a> &amp;obj1, vector&lt; <a class="el" href="class_object.html">Object</a> &gt; objects, double h)</td></tr>
+<tr class="separator:a5ac64abbac1e0a3a3971dd863941e7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af01012389e01c5f9d560401c0f5fe1ae" id="r_af01012389e01c5f9d560401c0f5fe1ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af01012389e01c5f9d560401c0f5fe1ae">isStar</a> (<a class="el" href="class_object.html">Object</a> *obj)</td></tr>
 <tr class="separator:af01012389e01c5f9d560401c0f5fe1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5571da56487c481d7ae6d0df7e3b074" id="r_ad5571da56487c481d7ae6d0df7e3b074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5571da56487c481d7ae6d0df7e3b074">addObjectFromHorizons</a> (string name)</td></tr>
 <tr class="separator:ad5571da56487c481d7ae6d0df7e3b074"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f441a53a6e2005ee524dd39656c218c" id="r_a2f441a53a6e2005ee524dd39656c218c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_object.html">Object</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f441a53a6e2005ee524dd39656c218c">getObjects</a> ()</td></tr>
 <tr class="separator:a2f441a53a6e2005ee524dd39656c218c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d309b6d3f3f3335ed539fefbc729049" id="r_a8d309b6d3f3f3335ed539fefbc729049"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d309b6d3f3f3335ed539fefbc729049">totalEnergy</a> ()</td></tr>
+<tr class="separator:a8d309b6d3f3f3335ed539fefbc729049"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a05584c08d63a489610c36076836bc189" name="a05584c08d63a489610c36076836bc189"></a>
@@ -154,6 +158,48 @@ Public Member Functions</h2></td></tr>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">ErrorType</td><td>an error message if there is any issue with the request or processing the response </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5ac64abbac1e0a3a3971dd863941e7a5" name="a5ac64abbac1e0a3a3971dd863941e7a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ac64abbac1e0a3a3971dd863941e7a5">&#9670;&#160;</a></span>euler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SolarSystem::euler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_object.html">Object</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>obj1</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_object.html">Object</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>objects</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>h</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Updates the position and speed of an object using the Euler method.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj1</td><td>The object to update </td></tr>
+    <tr><td class="paramname">objects</td><td>Other objects influencing the object </td></tr>
+    <tr><td class="paramname">h</td><td>The time step for the update</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">None</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -316,6 +362,23 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a8d309b6d3f3f3335ed539fefbc729049" name="a8d309b6d3f3f3335ed539fefbc729049"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d309b6d3f3f3335ed539fefbc729049">&#9670;&#160;</a></span>totalEnergy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SolarSystem::totalEnergy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

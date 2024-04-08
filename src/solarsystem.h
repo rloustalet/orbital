@@ -19,7 +19,7 @@ class SolarSystem {
         double processMass(const string& response);
         std::vector<double> processPosition(const string& response);
         std::vector<double> processSpeed(const string& response);
-        void printProgress(double percentage);
+        void printProgress(double percentage, int iterations_so_far, int total_iterations);
 
     public:
         SolarSystem(const string& n,const vector<Object>& objects); //on a dit que c t des arg de la classe SolarSystem
@@ -27,9 +27,11 @@ class SolarSystem {
         void exportdata(Object obj);
         void verlet(Object& obj1, vector<Object> objects, double h);
         void RK4(Object& obj1, vector<Object> objects, double h);
+        void euler(Object& obj1, vector<Object> objects, double h);
         bool isStar(Object* obj);
         void addObjectFromHorizons(string name);
         std::vector<Object> getObjects();
+        double totalEnergy();
 
         
 
