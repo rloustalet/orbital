@@ -22,5 +22,8 @@ run:
 	g++ -o main.o main.cpp src/object.cpp src/planet.cpp src/star.cpp src/solarsystem.cpp -I./src -lcurl
 	./main.o
 
+documentation:
+	doxygen doc/Doxyfile
+
 clean:
 	rm -f $(OBJ) $(TARGET)

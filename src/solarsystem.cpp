@@ -10,11 +10,26 @@
 
 using namespace std;
 
+/**
+ * Constructor for SolarSystem class.
+ *
+ * @param n The name of the solar system
+ * @param objs Vector of objects in the solar system
+ */
 SolarSystem::SolarSystem(const std::string& n,const vector<Object>& objs): name(n), objects(objs) {
     this->name=n;
     this->objects=objs;
 }
 
+/**
+ * Print the progress bar based on the given percentage.
+ *
+ * @param percentage the percentage of progress completed
+ *
+ * @return void
+ *
+ * @throws None
+ */
 void SolarSystem::printProgress(double percentage) {
     int val = (int) (percentage * 100);
     int lpad = (int) (percentage * PBWIDTH);
@@ -22,12 +37,33 @@ void SolarSystem::printProgress(double percentage) {
     printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
     fflush(stdout);
 }
+/**
+ * Writes data to a string and returns the size of the data written.
+ *
+ * @param contents pointer to the data to be written
+ * @param size size of each element to be written
+ * @param nmemb number of elements to be written
+ * @param data pointer to the string to which the data is written
+ *
+ * @return total size of the data written
+ */
 static size_t writeCallback(void *contents, size_t size, size_t nmemb, string *data) {
     size_t totalSize = size * nmemb;
     data->append((char*)contents, totalSize);
     return totalSize;
 }
 
+/**
+ * Gives the position of the Earth and the Sun at time t.
+ *
+ * @param algo the algorithm to be used
+ * @param h the step size
+ * @param t the time
+ *
+ * @return description of return value
+ *
+ * @throws ErrorType description of error
+ */
 void SolarSystem::solve(string algo, double h,double t){
     //donne la positon de la terre et du soleil à t
     for (Object obj : objects) {
@@ -67,6 +103,15 @@ void SolarSystem::solve(string algo, double h,double t){
     }
 }
 
+/**
+ * Exports data of the given object to a CSV file.
+ *
+ * @param obj the object to export
+ *
+ * @return void
+ *
+ * @throws std::ofstream::failure if the file opening fails
+ */
 void SolarSystem::exportdata(Object obj){
     std::ofstream outfile;
     string name = obj.getName() + ".csv";
@@ -78,6 +123,17 @@ void SolarSystem::exportdata(Object obj){
     outfile.close();
 }
 
+/**
+ * Perform the Verlet integration to update the position and velocity of the given object.
+ *
+ * @param obj1 The object for which the position and velocity are to be updated.
+ * @param objects The vector of other objects affecting the given object.
+ * @param h The time step for the integration.
+ *
+ * @return None
+ *
+ * @throws None
+ */
 void SolarSystem::verlet(Object &obj1, std::vector<Object> objects, double h)
 {
 //x(t+h)=x(t)+v(t)*h+1/2*a(t)*h**2
@@ -102,6 +158,17 @@ obj1.setSpeed(vitesse);
 
 }
 
+/**
+ * Runge-Kutta 4th Order method implementation for solving differential equations.
+ *
+ * @param obj1 The main object for which the RK4 method is applied
+ * @param objects Other objects influencing the main object
+ * @param h The time step for the RK4 method
+ *
+ * @return void
+ *
+ * @throws None
+ */
 void SolarSystem::RK4(Object &obj1, std::vector<Object> objects, double h)
 {
 std::vector<double>position(3);
@@ -199,11 +266,28 @@ obj1.setSpeed(vitesse);
 
 }
 
+/**
+ * Check if the given object is a star in the solar system.
+ *
+ * @param obj pointer to the object to check
+ *
+ * @return true if the object is a star, false otherwise
+ *
+ */
 bool SolarSystem::isStar(Object* obj) {
     return dynamic_cast<Object*>(obj) != nullptr;
 
 }
 
+/**
+ * Adds an object to the Solar System based on the name provided.
+ *
+ * @param name the name of the object to be added
+ *
+ * @return void
+ *
+ * @throws ErrorType an error message if there is any issue with the request or processing the response
+ */
 void SolarSystem::addObjectFromHorizons(string name) {
         transform(name.begin(), name.end(), name.begin(), ::tolower);
         string object_id = "0";
@@ -270,6 +354,15 @@ void SolarSystem::addObjectFromHorizons(string name) {
         
     }
 
+/**
+ * Process the mass of the Solar System based on the given response.
+ *
+ * @param response the input string containing the GM value
+ *
+ * @return the mass of the Solar System
+ *
+ * @throws None
+ */
 double SolarSystem::processMass(const string& response) {
         regex GMPattern("GM[,\\s*][(\\s*]km\\^3.s\\^2[\\s+)]\\s+=\\s+(\\d+.\\d+)");
         smatch GMMatches;
@@ -282,7 +375,16 @@ double SolarSystem::processMass(const string& response) {
         }
     }
 
-    vector<double> SolarSystem::processSpeed(const string& response) {
+/**
+ * Process the speed coordinates from the given response string.
+ *
+ * @param response the string containing the speed information
+ *
+ * @return a vector of doubles representing the speed coordinates
+ *
+ * @throws N/A
+ */
+vector<double> SolarSystem::processSpeed(const string& response) {
         // Expression régulière pour extraire les coordonnées des vecteurs de vitesse
         regex speedPattern("VX\\s*=\\s*(-?\\d+\\.\\d+(?:E[+-]\\d+)?)\\s+VY\\s*=\\s*(-?\\d+\\.\\d+(?:E[+-]\\d+)?)\\s+VZ\\s*=\\s*(-?\\d+\\.\\d+(?:E[+-]\\d+)?)");
         smatch speedMatches;
@@ -298,7 +400,16 @@ double SolarSystem::processMass(const string& response) {
         }
     }
 
-    vector<double> SolarSystem::processPosition(const string& response) {
+/**
+ * Regular expression to extract the coordinates of the position vectors
+ *
+ * @param response const reference to the response string
+ *
+ * @return vector<double> the processed position vector
+ *
+ * @throws None
+ */
+vector<double> SolarSystem::processPosition(const string& response) {
         // Expression régulière pour extraire les coordonnées des vecteurs de position
         regex positionPattern("X\\s*=\\s*(-?\\d+\\.\\d+(?:E[+-]\\d+)?)\\s+Y\\s*=\\s*(-?\\d+\\.\\d+(?:E[+-]\\d+)?)\\s+Z\\s*=\\s*(-?\\d+\\.\\d+(?:E[+-]\\d+)?)");
         smatch positionMatches;
@@ -314,6 +425,11 @@ double SolarSystem::processMass(const string& response) {
         }
     }
 
+    /**
+     * Get the list of objects in the SolarSystem.
+     *
+     * @return the list of objects
+     */
     std::vector<Object> SolarSystem::getObjects() {
         return objects;
     }
