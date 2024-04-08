@@ -7,8 +7,8 @@
 #include "src/star.h"
 
 int main(){
-    double h = 2 * 3600;
-    double t =  30 * 365 * 24 * 3600;
+    double h = 0.1 * 3600;
+    double t =  1 * 365 * 24 * 3600;
 
     std::vector<Object> objects;
     //objects.push_back(sun);
@@ -18,16 +18,16 @@ int main(){
 
     SolarSystem solarsystem("système solaire",objects);
     solarsystem.addObjectFromHorizons("Sun");
-    solarsystem.addObjectFromHorizons("Mercury");
-    solarsystem.addObjectFromHorizons("Venus");
+    //solarsystem.addObjectFromHorizons("Mercury");
+    //solarsystem.addObjectFromHorizons("Venus");
     solarsystem.addObjectFromHorizons("Earth");
-    solarsystem.addObjectFromHorizons("Mars");
-    solarsystem.addObjectFromHorizons("Jupiter");
-    solarsystem.addObjectFromHorizons("Saturn");
-    solarsystem.addObjectFromHorizons("Uranus");
-    solarsystem.addObjectFromHorizons("Neptune");
+    //solarsystem.addObjectFromHorizons("Mars");
+    //solarsystem.addObjectFromHorizons("Jupiter");
+    //solarsystem.addObjectFromHorizons("Saturn");
+    //solarsystem.addObjectFromHorizons("Uranus");
+    //solarsystem.addObjectFromHorizons("Neptune");
     //solarsystem.addObjectFromHorizons("Pluto");
-    solarsystem.addObjectFromHorizons("moon");
+    //solarsystem.addObjectFromHorizons("moon");
     
     
     solarsystem.solve("euler",h, t);

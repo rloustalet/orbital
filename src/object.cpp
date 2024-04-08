@@ -152,8 +152,9 @@ std::vector<double> Object::gravForce(const Object& obj) {
 void Object::computeAcceleration(std::vector<Object>& objects) {
     std::vector<double> accel(3);
     for(Object obj : objects) {
+        std::vector<double> force = gravForce(obj);
         for (int l = 0; l<=2; l++) {
-            accel[l] += gravForce(obj)[l] / mass;
+            accel[l] += force[l] / mass;
         }
     }
     setAcceleration(accel);

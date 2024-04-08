@@ -55,7 +55,7 @@ void SolarSystem::printProgress(double percentage, int iterations_so_far, int to
     double total_predicted_time = average_time_per_iteration * total_iterations;
 
     // Affichage du temps écoulé et du temps restant
-    printf(" | %.2fs/ %.2fs, %.2fs/iter", elapsed_seconds, total_predicted_time, average_time_per_iteration);
+    printf(" %.2fs/%.2fs, %.2fs/iter", elapsed_seconds, total_predicted_time, average_time_per_iteration);
     if (iterations_so_far == total_iterations) {
         printf("\n");
     }
@@ -160,6 +160,34 @@ void SolarSystem::exportdata(Object obj){
     << obj.getSpeed()[0] << " " 
     << obj.getSpeed()[1] << " " << obj.getSpeed()[2] << " " << obj.totalEnergy() << std::endl;
     outfile.close();
+}
+
+/**
+ * Updates the position and speed of an object using the Euler method.
+ *
+ * @param obj1 The object to update
+ * @param objects Other objects influencing the object
+ * @param h The time step for the update
+ *
+ * @return void
+ *
+ * @throws None
+ */
+void SolarSystem::euler(Object &obj1, std::vector<Object> objects, double h)
+{
+std::vector<double>position = obj1.getPosition();
+std::vector<double>vitesse = obj1.getSpeed();
+
+obj1.computeAcceleration(objects);
+
+for(int k=0;k<=2;k++)
+        {
+        vitesse[k] += obj1.getAcceleration()[k]*h;
+        position[k] += vitesse[k]*h;
+        }
+obj1.setPosition(position);
+obj1.setSpeed(vitesse);
+
 }
 
 /**
@@ -302,35 +330,6 @@ obj1.setPosition(position);
 obj1.setSpeed(vitesse);
 
 
-
-}
-
-/**
- * Updates the position and speed of an object using the Euler method.
- *
- * @param obj1 The object to update
- * @param objects Other objects influencing the object
- * @param h The time step for the update
- *
- * @return void
- *
- * @throws None
- */
-void SolarSystem::euler(Object &obj1, std::vector<Object> objects, double h)
-{
-std::vector<double>position(3);
-std::vector<double>vitesse = obj1.getSpeed();
-std::vector<double>force(3);
-
-
-for(int k=0;k<=2;k++)
-        {
-        position[k] = position[k] + vitesse[k]*h;
-        vitesse[k] = vitesse[k] + obj1.getAcceleration()[k]*h;
-        }
-
-obj1.setPosition(position);
-obj1.setSpeed(vitesse);
 
 }
 
