@@ -1,0 +1,358 @@
+\doxysection{Object Class Reference}
+\hypertarget{class_object}{}\label{class_object}\index{Object@{Object}}
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_object_a5763b471e6d6849c80fb24ec6abc6d67}{Object}} (const std\+::string \&n, std\+::vector$<$ double $>$ \&pos, std\+::vector$<$ double $>$ \&spd, std\+::vector$<$ double $>$ \&acc, double m)
+\item 
+std\+::string \mbox{\hyperlink{class_object_acb9b466607cb80beaaa30ece2f7f570a}{get\+Name}} () const
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_object_a1824f88b6608b5d52eca17a269511fa5}{get\+Position}} () const
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_object_ac0d71479bfc45a64c0e5412f989c9876}{get\+Speed}} () const
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_object_a98f694ea0b13a373db9bae7078d83f54}{get\+Acceleration}} () const
+\item 
+double \mbox{\hyperlink{class_object_ac53341c11f7435033434bc3b6c908f0c}{get\+Mass}} () const
+\item 
+void \mbox{\hyperlink{class_object_a0a45150edfab44e0fecc5d1d740566af}{set\+Name}} (const std\+::string \&n)
+\item 
+void \mbox{\hyperlink{class_object_ad3bad2b0eb2a1ba69686a8aae8eec329}{set\+Position}} (std\+::vector$<$ double $>$ \&pos)
+\item 
+void \mbox{\hyperlink{class_object_a9709d62488cb0329ddca65decec646a4}{set\+Speed}} (std\+::vector$<$ double $>$ \&spd)
+\item 
+void \mbox{\hyperlink{class_object_aada7a5a9b782a818ef33edb31ce976d4}{set\+Acceleration}} (std\+::vector$<$ double $>$ \&acc)
+\item 
+void \mbox{\hyperlink{class_object_ac551166d334fbccaecfc6a650e79c320}{set\+Mass}} (double m)
+\item 
+void \mbox{\hyperlink{class_object_adb55af8341d5733e5a28ca2ede5ac7f6}{compute\+Acceleration}} (std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&objects)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_object_adf826d574ccdb757fa2e25ee7e7dff3a}{distance\+Vect}} (\mbox{\hyperlink{class_object}{Object}} obj)
+\item 
+double \mbox{\hyperlink{class_object_aa86586dd13a83c3eab986d23c7a9168e}{distance}} (const \mbox{\hyperlink{class_object}{Object}} \&obj)
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_object_ab31873d20718ea77122a49968237a3f4}{grav\+Force}} (const \mbox{\hyperlink{class_object}{Object}} \&obj)
+\item 
+double \mbox{\hyperlink{class_object_ad07303e0b982d0fa785a13b440a909da}{kinetic\+Energy}} ()
+\item 
+void \mbox{\hyperlink{class_object_a9b4f30b359ad24617c5aa3cc664d007d}{compute\+Potential\+Energy}} (std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&objects)
+\item 
+double \mbox{\hyperlink{class_object_a24790a6db1f8615fc19aaa427081582e}{total\+Energy}} ()
+\item 
+void \mbox{\hyperlink{class_object_a6444f7457f8c0e1399ec65d8c6f66fef}{clear\+Potential\+Energy}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_object_a5763b471e6d6849c80fb24ec6abc6d67}\label{class_object_a5763b471e6d6849c80fb24ec6abc6d67} 
+\index{Object@{Object}!Object@{Object}}
+\index{Object@{Object}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{Object()}{Object()}}
+{\footnotesize\ttfamily Object\+::\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{n,  }\item[{std\+::vector$<$ double $>$ \&}]{pos,  }\item[{std\+::vector$<$ double $>$ \&}]{spd,  }\item[{std\+::vector$<$ double $>$ \&}]{acc,  }\item[{double}]{m }\end{DoxyParamCaption})}
+
+Constructor for \doxylink{class_object}{Object} class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & the name of the object \\
+\hline
+{\em pos} & the initial position of the object \\
+\hline
+{\em spd} & the initial speed of the object \\
+\hline
+{\em acc} & the initial acceleration of the object \\
+\hline
+{\em m} & the mass of the object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+N/A
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em N/A} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_object_a6444f7457f8c0e1399ec65d8c6f66fef}\label{class_object_a6444f7457f8c0e1399ec65d8c6f66fef} 
+\index{Object@{Object}!clearPotentialEnergy@{clearPotentialEnergy}}
+\index{clearPotentialEnergy@{clearPotentialEnergy}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{clearPotentialEnergy()}{clearPotentialEnergy()}}
+{\footnotesize\ttfamily void Object\+::clear\+Potential\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the potential energy of the object. \Hypertarget{class_object_adb55af8341d5733e5a28ca2ede5ac7f6}\label{class_object_adb55af8341d5733e5a28ca2ede5ac7f6} 
+\index{Object@{Object}!computeAcceleration@{computeAcceleration}}
+\index{computeAcceleration@{computeAcceleration}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{computeAcceleration()}{computeAcceleration()}}
+{\footnotesize\ttfamily void Object\+::compute\+Acceleration (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&}]{objects }\end{DoxyParamCaption})}
+
+Compute the acceleration of the object based on the gravitational force from other objects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & the vector of other \doxylink{class_object}{Object} instances\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Error\+Type} & (if applicable) description of error \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_object_a9b4f30b359ad24617c5aa3cc664d007d}\label{class_object_a9b4f30b359ad24617c5aa3cc664d007d} 
+\index{Object@{Object}!computePotentialEnergy@{computePotentialEnergy}}
+\index{computePotentialEnergy@{computePotentialEnergy}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{computePotentialEnergy()}{computePotentialEnergy()}}
+{\footnotesize\ttfamily void Object\+::compute\+Potential\+Energy (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_object}{Object}} $>$ \&}]{objects }\end{DoxyParamCaption})}
+
+Compute the potential energy of the objects in the given vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em objects} & vector of \doxylink{class_object}{Object} instances for which potential energy needs to be computed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em N/A} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_object_aa86586dd13a83c3eab986d23c7a9168e}\label{class_object_aa86586dd13a83c3eab986d23c7a9168e} 
+\index{Object@{Object}!distance@{distance}}
+\index{distance@{distance}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}}
+{\footnotesize\ttfamily double Object\+::distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_object}{Object}} \&}]{obj }\end{DoxyParamCaption})}
+
+Calculates the distance between this \doxylink{class_object}{Object} and the input \doxylink{class_object}{Object}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The \doxylink{class_object}{Object} to calculate the distance to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Euclidean distance between the two Objects.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_object_adf826d574ccdb757fa2e25ee7e7dff3a}\label{class_object_adf826d574ccdb757fa2e25ee7e7dff3a} 
+\index{Object@{Object}!distanceVect@{distanceVect}}
+\index{distanceVect@{distanceVect}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{distanceVect()}{distanceVect()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Object\+::distance\+Vect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_object}{Object}}}]{obj }\end{DoxyParamCaption})}
+
+Generates a vector representing the distance between the current object and the passed object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The object to calculate the distance from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the distances in each dimension.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_object_a98f694ea0b13a373db9bae7078d83f54}\label{class_object_a98f694ea0b13a373db9bae7078d83f54} 
+\index{Object@{Object}!getAcceleration@{getAcceleration}}
+\index{getAcceleration@{getAcceleration}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getAcceleration()}{getAcceleration()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Object\+::get\+Acceleration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_object_ac53341c11f7435033434bc3b6c908f0c}\label{class_object_ac53341c11f7435033434bc3b6c908f0c} 
+\index{Object@{Object}!getMass@{getMass}}
+\index{getMass@{getMass}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getMass()}{getMass()}}
+{\footnotesize\ttfamily double Object\+::get\+Mass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the mass of the object.
+
+\begin{DoxyReturn}{Returns}
+the mass of the object 
+\end{DoxyReturn}
+\Hypertarget{class_object_acb9b466607cb80beaaa30ece2f7f570a}\label{class_object_acb9b466607cb80beaaa30ece2f7f570a} 
+\index{Object@{Object}!getName@{getName}}
+\index{getName@{getName}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Object\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the name of the object.
+
+\begin{DoxyReturn}{Returns}
+the name of the object 
+\end{DoxyReturn}
+\Hypertarget{class_object_a1824f88b6608b5d52eca17a269511fa5}\label{class_object_a1824f88b6608b5d52eca17a269511fa5} 
+\index{Object@{Object}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Object\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the position of the \doxylink{class_object}{Object}.
+
+\begin{DoxyReturn}{Returns}
+the position of the \doxylink{class_object}{Object} as a vector of doubles 
+\end{DoxyReturn}
+\Hypertarget{class_object_ac0d71479bfc45a64c0e5412f989c9876}\label{class_object_ac0d71479bfc45a64c0e5412f989c9876} 
+\index{Object@{Object}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Object\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Get the speed of the \doxylink{class_object}{Object}.
+
+\begin{DoxyReturn}{Returns}
+a vector of doubles representing the speed 
+\end{DoxyReturn}
+\Hypertarget{class_object_ab31873d20718ea77122a49968237a3f4}\label{class_object_ab31873d20718ea77122a49968237a3f4} 
+\index{Object@{Object}!gravForce@{gravForce}}
+\index{gravForce@{gravForce}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{gravForce()}{gravForce()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Object\+::grav\+Force (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_object}{Object}} \&}]{obj }\end{DoxyParamCaption})}
+
+Calculate gravitational force between two objects.
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & The other object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The gravitational force vector
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_object_ad07303e0b982d0fa785a13b440a909da}\label{class_object_ad07303e0b982d0fa785a13b440a909da} 
+\index{Object@{Object}!kineticEnergy@{kineticEnergy}}
+\index{kineticEnergy@{kineticEnergy}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{kineticEnergy()}{kineticEnergy()}}
+{\footnotesize\ttfamily double Object\+::kinetic\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calculate the kinetic energy of the object.
+
+\begin{DoxyReturn}{Returns}
+the calculated kinetic energy 
+\end{DoxyReturn}
+\Hypertarget{class_object_aada7a5a9b782a818ef33edb31ce976d4}\label{class_object_aada7a5a9b782a818ef33edb31ce976d4} 
+\index{Object@{Object}!setAcceleration@{setAcceleration}}
+\index{setAcceleration@{setAcceleration}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setAcceleration()}{setAcceleration()}}
+{\footnotesize\ttfamily void Object\+::set\+Acceleration (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{acc }\end{DoxyParamCaption})}
+
+Set the acceleration vector for the \doxylink{class_object}{Object}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em acc} & The acceleration vector to set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_object_ac551166d334fbccaecfc6a650e79c320}\label{class_object_ac551166d334fbccaecfc6a650e79c320} 
+\index{Object@{Object}!setMass@{setMass}}
+\index{setMass@{setMass}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setMass()}{setMass()}}
+{\footnotesize\ttfamily void Object\+::set\+Mass (\begin{DoxyParamCaption}\item[{double}]{m }\end{DoxyParamCaption})}
+
+Set the mass of the object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & the mass to set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_object_a0a45150edfab44e0fecc5d1d740566af}\label{class_object_a0a45150edfab44e0fecc5d1d740566af} 
+\index{Object@{Object}!setName@{setName}}
+\index{setName@{setName}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Object\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{n }\end{DoxyParamCaption})}
+
+Sets the name of the object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & the new name to set\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em none} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_object_ad3bad2b0eb2a1ba69686a8aae8eec329}\label{class_object_ad3bad2b0eb2a1ba69686a8aae8eec329} 
+\index{Object@{Object}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Object\+::set\+Position (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{pos }\end{DoxyParamCaption})}
+
+Set the position of the \doxylink{class_object}{Object}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & vector of doubles representing the new position \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_object_a9709d62488cb0329ddca65decec646a4}\label{class_object_a9709d62488cb0329ddca65decec646a4} 
+\index{Object@{Object}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Object\+::set\+Speed (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{spd }\end{DoxyParamCaption})}
+
+Sets the speed of the object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em spd} & vector containing the speed values to set\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_object_a24790a6db1f8615fc19aaa427081582e}\label{class_object_a24790a6db1f8615fc19aaa427081582e} 
+\index{Object@{Object}!totalEnergy@{totalEnergy}}
+\index{totalEnergy@{totalEnergy}!Object@{Object}}
+\doxysubsubsection{\texorpdfstring{totalEnergy()}{totalEnergy()}}
+{\footnotesize\ttfamily double Object\+::total\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Calculates the total energy by summing the kinetic and potential energy.
+
+\begin{DoxyReturn}{Returns}
+the total energy as a double 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{object_8h}{object.\+h}}\item 
+src/\mbox{\hyperlink{object_8cpp}{object.\+cpp}}\end{DoxyCompactItemize}

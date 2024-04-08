@@ -23,7 +23,7 @@ run:
 	./main.o
 
 documentation:
-	doxygen doc/Doxyfile
+	doxygen docs/Doxyfile
 
 clean:
 	rm -f $(OBJ) $(TARGET)

@@ -1,0 +1,52 @@
+\doxysection{object.\+h}
+\hypertarget{object_8h_source}{}\label{object_8h_source}\index{src/object.h@{src/object.h}}
+\mbox{\hyperlink{object_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ OBJECT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ OBJECT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_object}{Object}}\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ std::vector<double>\ position;}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ std::vector<double>\ speed;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ std::vector<double>\ acceleration;}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ std::vector<double>\ force;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass;}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ potentialEnergy;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_a5763b471e6d6849c80fb24ec6abc6d67}{Object}}(\textcolor{keyword}{const}\ std::string\&\ n,\ std::vector<double>\&\ pos,\ std::vector<double>\&\ spd,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::vector<double>\&\ acc,\ \textcolor{keywordtype}{double}\ m);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_object_acb9b466607cb80beaaa30ece2f7f570a}{getName}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_object_a1824f88b6608b5d52eca17a269511fa5}{getPosition}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_object_ac0d71479bfc45a64c0e5412f989c9876}{getSpeed}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_object_a98f694ea0b13a373db9bae7078d83f54}{getAcceleration}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_object_ac53341c11f7435033434bc3b6c908f0c}{getMass}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_a0a45150edfab44e0fecc5d1d740566af}{setName}}(\textcolor{keyword}{const}\ std::string\&\ n);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_ad3bad2b0eb2a1ba69686a8aae8eec329}{setPosition}}(std::vector<double>\&\ pos);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_a9709d62488cb0329ddca65decec646a4}{setSpeed}}(std::vector<double>\&\ spd);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_aada7a5a9b782a818ef33edb31ce976d4}{setAcceleration}}(std::vector<double>\&\ acc);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_ac551166d334fbccaecfc6a650e79c320}{setMass}}(\textcolor{keywordtype}{double}\ m);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_adb55af8341d5733e5a28ca2ede5ac7f6}{computeAcceleration}}(std::vector<Object>\&\ objects);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_object_adf826d574ccdb757fa2e25ee7e7dff3a}{distanceVect}}(\mbox{\hyperlink{class_object}{Object}}\ obj);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_object_aa86586dd13a83c3eab986d23c7a9168e}{distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_object}{Object}}\&\ obj);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_object_ab31873d20718ea77122a49968237a3f4}{gravForce}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_object}{Object}}\&\ obj);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_object_ad07303e0b982d0fa785a13b440a909da}{kineticEnergy}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_a9b4f30b359ad24617c5aa3cc664d007d}{computePotentialEnergy}}(std::vector<Object>\&\ objects);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_object_a24790a6db1f8615fc19aaa427081582e}{totalEnergy}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_object_a6444f7457f8c0e1399ec65d8c6f66fef}{clearPotentialEnergy}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
