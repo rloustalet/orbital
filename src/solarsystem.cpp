@@ -55,7 +55,7 @@ void SolarSystem::printProgress(double percentage, int iterations_so_far, int to
     double total_predicted_time = average_time_per_iteration * total_iterations;
 
     // Affichage du temps écoulé et du temps restant
-    printf(" %.2fs/%.2fs, %.2fs/iter", elapsed_seconds, total_predicted_time, average_time_per_iteration);
+    printf(" %.2fs/%.2fs, %.0fms/iter", elapsed_seconds, total_predicted_time, 1000*average_time_per_iteration);
     if (iterations_so_far == total_iterations) {
         printf("\n");
     }
@@ -89,7 +89,7 @@ static size_t writeCallback(void *contents, size_t size, size_t nmemb, string *d
  */
 void SolarSystem::solve(string algo, double h,double t){
     //donne la positon de la terre et du soleil à t
-    string filename = name + ".csv";
+    string filename = "results/" + name + ".csv";
     if (std::remove(filename.c_str()) != 0) {
         std::cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << std::endl;
     }
@@ -97,7 +97,7 @@ void SolarSystem::solve(string algo, double h,double t){
         std::cout << "Le fichier " << filename << " a été supprimé avec succès." << std::endl;
     }
     for (Object obj : objects) {
-        string filename = obj.getName() + ".csv";
+        string filename ="results/" + obj.getName() + ".csv";
         if (std::remove(filename.c_str()) != 0) {
         std::cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << std::endl;
     } else {
@@ -106,10 +106,9 @@ void SolarSystem::solve(string algo, double h,double t){
     }
 
     double steps=t/h;
-
     transform(algo.begin(), algo.end(), algo.begin(), ::tolower);
 
-    for(int i=0;i<=steps+1;i++)
+    for(double i=0;i<=steps+1;i++)
     {
         printProgress(i / steps, i, steps+1);
         for (int j=0;j<objects.size();j++) {
@@ -133,7 +132,7 @@ void SolarSystem::solve(string algo, double h,double t){
 
         }
         std::ofstream outfile;
-        string filename = name + ".csv";
+        string filename = "results/" + name + ".csv";
         outfile.open(filename, std::ios_base::app);
         outfile << totalEnergy() << std::endl;
         outfile.close();
@@ -153,7 +152,7 @@ void SolarSystem::solve(string algo, double h,double t){
  */
 void SolarSystem::exportdata(Object obj){
     std::ofstream outfile;
-    string filename = obj.getName() + ".csv";
+    string filename = "results/" + obj.getName() + ".csv";
     outfile.open(filename, std::ios_base::app);
     outfile << obj.getName() << " " << obj.getPosition()[0] << " " 
     << obj.getPosition()[1] << " " << obj.getPosition()[2] << " " 
