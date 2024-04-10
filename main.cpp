@@ -30,7 +30,7 @@ int main(){
     //solarsystem.addObjectFromHorizons("moon");
     
     
-    solarsystem.solve("euler",h, t);
+    solarsystem.solve("rk4",h, t);
 
 }
 
