@@ -19,8 +19,10 @@ testing:
 	./test/test_util.o
 
 run:
-	g++ -o main.o main.cpp src/object.cpp src/planet.cpp src/star.cpp src/solarsystem.cpp -I./src -lcurl
-	./main.o
+	mkdir -p build
+	mkdir -p results
+	g++ -o build/main.o main.cpp src/object.cpp src/planet.cpp src/star.cpp src/solarsystem.cpp -I./src -lcurl
+	./build/main.o
 
 documentation:
 	doxygen docs/Doxyfile
