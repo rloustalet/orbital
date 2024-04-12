@@ -29,3 +29,6 @@ documentation:
 
 clean:
 	rm -f $(OBJ) $(TARGET)
+
+graph:
+	gnuplot graph.gnu -persist

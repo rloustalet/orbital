@@ -345,6 +345,7 @@ obj1.setSpeed(vitesse);
  */
 void SolarSystem::addObjectFromHorizons(string name) {
         transform(name.begin(), name.end(), name.begin(), ::tolower);
+        cout << "performing query for " << name << endl;
         string object_id = "0";
         if (name == "sun") {
             object_id = "10";
@@ -503,7 +504,7 @@ void SolarSystem::addObjectFromHorizons(string name) {
  * @throws None
  */
 double SolarSystem::processMass(const string& response) {
-        regex GMPattern("GM[,\\s*][(\\s*]km\\^3.s\\^2[\\s+)]\\s+=\\s+(\\d+.\\d+)");
+        regex GMPattern("GM[(,\\s*]*km\\^3.s\\^2[\\s+)]\\s+=\\s+(\\d+.\\d+)");
         smatch GMMatches;
         if (regex_search(response, GMMatches, GMPattern)) {
             double GM = stod(GMMatches[1].str())*pow(10,9);
