@@ -4,6 +4,8 @@ SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = exec
 
+.PHONY: generate_plots
+
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
@@ -30,5 +32,12 @@ documentation:
 clean:
 	rm -f $(OBJ) $(TARGET)
 
-graph:
-	gnuplot graph.gnu -persist
+names := $(filter-out $@,$(MAKECMDGOALS))
+
+generate_plots:
+    plot_commands=$$(for name in $(names); do echo "'results/$$name.csv' using 1:2:3 with points"; done); \
+	gnuplot -e -p splot $$plot_commands
+
+make graph:
+	gnuplot graph.gnu -e -p
+ 

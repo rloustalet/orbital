@@ -19,13 +19,13 @@ int main(){
     solarsystem.addObjectFromHorizons("Mars");
     solarsystem.addObjectFromHorizons("Jupiter");
     solarsystem.addObjectFromHorizons("Saturn");
-    solarsystem.addObjectFromHorizons("Uranus");
-    solarsystem.addObjectFromHorizons("Neptune");
-    solarsystem.addObjectFromHorizons("moon");
-    solarsystem.addObjectFromHorizons("io");
-    solarsystem.addObjectFromHorizons("europa");
-    solarsystem.addObjectFromHorizons("ganymede");
-    solarsystem.addObjectFromHorizons("callisto");
+    //solarsystem.addObjectFromHorizons("Uranus");
+    //solarsystem.addObjectFromHorizons("Neptune");
+    //solarsystem.addObjectFromHorizons("moon");
+    //solarsystem.addObjectFromHorizons("io");
+    //solarsystem.addObjectFromHorizons("europa");
+    //solarsystem.addObjectFromHorizons("ganymede");
+    //solarsystem.addObjectFromHorizons("callisto");
     
     
     solarsystem.solve("RK4",h, t);

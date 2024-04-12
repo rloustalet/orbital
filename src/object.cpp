@@ -228,7 +228,7 @@ void Object::computePotentialEnergy(vector<Object>& objects) {
     for (Object obj : objects) {
         potentialEnergy += sqrt(gravForce(obj)[0] * gravForce(obj)[0] +
                             gravForce(obj)[1] * gravForce(obj)[1] +
-                            gravForce(obj)[2] * gravForce(obj)[2])*mass*
+                            gravForce(obj)[2] * gravForce(obj)[2])*
                             distance(obj);
     }
 }
@@ -267,7 +267,7 @@ double Object::normeCinematicMoment()
    double vx = vitesse[0];
    double vy = vitesse[1];
    double vz = vitesse[2];   
-   return getMass() * sqrt((dy*vz-dz*vy)*(dy*vz-dz*vy)+(dz*vx-dx*vz)*(dz*vx-dx*vz)+(dx*vy-dy*vx)*(dx*vy-dy*vx));
+   return getMass() * sqrt(pow((dy*vz-dz*vy),2)+pow((dz*vx-dx*vz), 2)+pow((dx*vy-dy*vx), 2));
 }
 
 /**
@@ -281,5 +281,5 @@ double Object::normeCinematicMoment()
  */
 void Object::computeArea(double h) 
 {
-   area = 0.5 * h *sqrt(normeCinematicMoment())/getMass();
+   area = 0.5 * h *normeCinematicMoment()/getMass();
 }
