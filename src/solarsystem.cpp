@@ -16,7 +16,7 @@ using namespace std;
  * @param n The name of the solar system
  * @param objs Vector of objects in the solar system
  */
-SolarSystem::SolarSystem(const std::string& n,const vector<Object>& objs): name(n), objects(objs) {
+SolarSystem::SolarSystem(const string& n,const vector<Object>& objs): name(n), objects(objs) {
     this->name=n;
     this->objects=objs;
 }
@@ -90,18 +90,18 @@ static size_t writeCallback(void *contents, size_t size, size_t nmemb, string *d
 void SolarSystem::solve(string algo, double h,double t){
     //donne la positon de la terre et du soleil à t
     string filename = "results/" + name + ".csv";
-    if (std::remove(filename.c_str()) != 0) {
-        std::cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << std::endl;
+    if (remove(filename.c_str()) != 0) {
+        cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << endl;
     }
     else {
-        std::cout << "Le fichier " << filename << " a été supprimé avec succès." << std::endl;
+        cout << "Le fichier " << filename << " a été supprimé avec succès." << endl;
     }
     for (Object obj : objects) {
         string filename ="results/" + obj.getName() + ".csv";
-        if (std::remove(filename.c_str()) != 0) {
-        std::cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << std::endl;
+        if (remove(filename.c_str()) != 0) {
+        cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << endl;
     } else {
-        std::cout << "Le fichier " << filename << " a été supprimé avec succès." << std::endl;
+        cout << "Le fichier " << filename << " a été supprimé avec succès." << endl;
     }
     }
 
@@ -125,16 +125,17 @@ void SolarSystem::solve(string algo, double h,double t){
                 euler(objects[j], subobjects, h);
             }
             else{
-                std::cout << "l'algorithme n'existe pas" << std::endl;
+                cout << "l'algorithme n'existe pas" << endl;
             }
+            objects[j].computeArea(h);
             objects[j].computePotentialEnergy(subobjects);
             objects[j].clearPotentialEnergy();
 
         }
-        std::ofstream outfile;
+        ofstream outfile;
         string filename = "results/" + name + ".csv";
-        outfile.open(filename, std::ios_base::app);
-        outfile << totalEnergy() << std::endl;
+        outfile.open(filename, ios_base::app);
+        outfile << totalEnergy() << endl;
         outfile.close();
 
 
@@ -148,16 +149,17 @@ void SolarSystem::solve(string algo, double h,double t){
  *
  * @return void
  *
- * @throws std::ofstream::failure if the file opening fails
+ * @throws ofstream::failure if the file opening fails
  */
 void SolarSystem::exportdata(Object obj){
-    std::ofstream outfile;
+    ofstream outfile;
     string filename = "results/" + obj.getName() + ".csv";
-    outfile.open(filename, std::ios_base::app);
-    outfile << obj.getName() << " " << obj.getPosition()[0] << " " 
+    outfile.open(filename, ios_base::app);
+    outfile << obj.getPosition()[0] << " " 
     << obj.getPosition()[1] << " " << obj.getPosition()[2] << " " 
     << obj.getSpeed()[0] << " " 
-    << obj.getSpeed()[1] << " " << obj.getSpeed()[2] << " " << obj.totalEnergy() << std::endl;
+    << obj.getSpeed()[1] << " " << obj.getSpeed()[2] << " " << obj.totalEnergy() << 
+    " " << obj.getArea() << " " << obj.normeCinematicMoment() << endl;
     outfile.close();
 }
 
@@ -172,10 +174,10 @@ void SolarSystem::exportdata(Object obj){
  *
  * @throws None
  */
-void SolarSystem::euler(Object &obj1, std::vector<Object> objects, double h)
+void SolarSystem::euler(Object &obj1, vector<Object> objects, double h)
 {
-std::vector<double>position = obj1.getPosition();
-std::vector<double>vitesse = obj1.getSpeed();
+vector<double>position = obj1.getPosition();
+vector<double>vitesse = obj1.getSpeed();
 
 obj1.computeAcceleration(objects);
 
@@ -200,7 +202,7 @@ obj1.setSpeed(vitesse);
  *
  * @throws None
  */
-void SolarSystem::verlet(Object &obj1, std::vector<Object> objects, double h)
+void SolarSystem::verlet(Object &obj1, vector<Object> objects, double h)
 {
 //x(t+h)=x(t)+v(t)*h+1/2*a(t)*h**2
 //v(t+h/2)=v(t)+a(t)*h/2
@@ -212,13 +214,13 @@ vector<double> acceleration = obj1.getAcceleration();
 
 for(int k=0;k<=2;k++)
         {
-        position[k] += vitesse[k]*h+(1/2)*obj1.getAcceleration()[k]*(h*h);
+        position[k] += vitesse[k]*h+(0.5L)*obj1.getAcceleration()[k]*(h*h);
         }
 obj1.setPosition(position);
 obj1.computeAcceleration(objects);
 for(int k=0;k<=2;k++)
         {
-        vitesse[k] += (acceleration[k] + obj1.getAcceleration()[k])*h/2;
+        vitesse[k] += (acceleration[k] + obj1.getAcceleration()[k])*h/2L;
         }
 obj1.setSpeed(vitesse);
 
@@ -235,25 +237,25 @@ obj1.setSpeed(vitesse);
  *
  * @throws None
  */
-void SolarSystem::RK4(Object &obj1, std::vector<Object> objects, double h)
+void SolarSystem::RK4(Object &obj1, vector<Object> objects, double h)
 {
-std::vector<double>position(3);
-std::vector<double>positioninit = obj1.getPosition();
-std::vector<double>vitesse = obj1.getSpeed();
-std::vector<double>vitesseinit = obj1.getSpeed();
-std::vector<double>force(3);
+vector<double>position(3);
+vector<double>positioninit = obj1.getPosition();
+vector<double>vitesse = obj1.getSpeed();
+vector<double>vitesseinit = obj1.getSpeed();
+vector<double>force(3);
 
-std::vector<double> k0(3);
-std::vector<double> l0(3);
+vector<double> k0(3);
+vector<double> l0(3);
 
-std::vector<double> k1(3);
-std::vector<double> l1(3);
+vector<double> k1(3);
+vector<double> l1(3);
 
-std::vector<double> k2(3);
-std::vector<double> l2(3);
+vector<double> k2(3);
+vector<double> l2(3);
 
-std::vector<double> k3(3);
-std::vector<double> l3(3);
+vector<double> k3(3);
+vector<double> l3(3);
 
 obj1.computeAcceleration(objects);
 
@@ -267,8 +269,8 @@ obj1.setSpeed(k0);
 
 for(int k=0;k<=2;k++)
         {
-        position[k] = positioninit[k] + obj1.getSpeed()[k]*h/2;
-        vitesse[k] = vitesseinit[k] + l0[k]*h/2;
+        position[k] = positioninit[k] + obj1.getSpeed()[k]*h/2L;
+        vitesse[k] = vitesseinit[k] + l0[k]*h/2L;
         }
 
 obj1.setPosition(position);
@@ -285,8 +287,8 @@ obj1.setSpeed(k1);
 
 for(int k=0;k<=2;k++)
         {
-        position[k] = positioninit[k] + obj1.getSpeed()[k]*h/2;
-        vitesse[k] = vitesseinit[k] + l1[k]*h/2;
+        position[k] = positioninit[k] + obj1.getSpeed()[k]*h/2L;
+        vitesse[k] = vitesseinit[k] + l1[k]*h/2L;
         }
 
 obj1.setPosition(position);
@@ -321,27 +323,14 @@ obj1.setSpeed(k3);
 
 for(int k=0;k<=2;k++)
         {
-        position[k] = positioninit[k] + (k0[k] + 2*k1[k] + 2*k2[k] + k3[k])*h/6;
-        vitesse[k] = vitesseinit[k] + (l0[k] + 2*l1[k] + 2*l2[k] + l3[k])*h/6;
+        position[k] = positioninit[k] + (k0[k] + 2L*k1[k] + 2L*k2[k] + k3[k])*h/6L;
+        vitesse[k] = vitesseinit[k] + (l0[k] + 2L*l1[k] + 2L*l2[k] + l3[k])*h/6L;
         }
 
 obj1.setPosition(position);
 obj1.setSpeed(vitesse);
 
 
-
-}
-
-/**
- * Check if the given object is a star in the solar system.
- *
- * @param obj pointer to the object to check
- *
- * @return true if the object is a star, false otherwise
- *
- */
-bool SolarSystem::isStar(Object* obj) {
-    return dynamic_cast<Object*>(obj) != nullptr;
 
 }
 
@@ -381,6 +370,90 @@ void SolarSystem::addObjectFromHorizons(string name) {
         }
         else if (name == "moon") {
             object_id = "301";
+        }
+        else if (name == "ceres") {
+        object_id = "1";
+        } 
+        else if (name == "pallas") {
+            object_id = "2";
+        } 
+        else if (name == "vesta") {
+            object_id = "4";
+        } 
+        else if (name == "juno") {
+            object_id = "3";
+        } 
+        else if (name == "io") {
+            object_id = "501";
+        } 
+        else if (name == "europa") {
+            object_id = "502";
+        } 
+        else if (name == "ganymede") {
+            object_id = "503";
+        } 
+        else if (name == "callisto") {
+            object_id = "504";
+        } 
+        else if (name == "titan") {
+            object_id = "606";
+        } 
+        else if (name == "enceladus") {
+            object_id = "602";
+        } 
+        else if (name == "mimas") {
+            object_id = "601";
+        } 
+        else if (name == "tethys") {
+            object_id = "603";
+        } 
+        else if (name == "dione") {
+            object_id = "604";
+        } 
+        else if (name == "rhea") {
+            object_id = "605";
+        } 
+        else if (name == "hyperion") {
+            object_id = "607";
+        } 
+        else if (name == "iapetus") {
+            object_id = "608";
+        } 
+        else if (name == "miranda") {
+            object_id = "701";
+        } 
+        else if (name == "ariel") {
+            object_id = "702";
+        } 
+        else if (name == "umbriel") {
+            object_id = "703";
+        } 
+        else if (name == "titania") {
+            object_id = "704";
+        } 
+        else if (name == "oberon") {
+            object_id = "705";
+        } 
+        else if (name == "triton") {
+            object_id = "801";
+        } 
+        else if (name == "charon") {
+            object_id = "901";
+        } 
+        else if (name == "halley") {
+            object_id = "1P";
+        } 
+        else if (name == "borrelly") {
+            object_id = "19P";
+        } 
+        else if (name == "tempel1") {
+            object_id = "9P";
+        } 
+        else if (name == "chiron") {
+            object_id = "2060";
+        } 
+        else if (name == "eros") {
+            object_id = "433";
         }
 
         CURL *curl;
@@ -434,7 +507,7 @@ double SolarSystem::processMass(const string& response) {
         smatch GMMatches;
         if (regex_search(response, GMMatches, GMPattern)) {
             double GM = stod(GMMatches[1].str())*pow(10,9);
-            return GM/6.67e-11;
+            return GM/6.67e-11L;
         } else {
             cerr << "GM non trouvée." << endl;
             return 0.0;
@@ -457,7 +530,7 @@ vector<double> SolarSystem::processSpeed(const string& response) {
         if (regex_search(response, speedMatches, speedPattern)) {
             vector<double> speed;
             for (int i = 1; i <= 3; ++i) {
-                speed.push_back(stod(speedMatches[i].str())*1000);
+                speed.push_back(stod(speedMatches[i].str())*1000L);
             }
             return speed;
         } else {
@@ -496,14 +569,26 @@ vector<double> SolarSystem::processPosition(const string& response) {
      *
      * @return the list of objects
      */
-    std::vector<Object> SolarSystem::getObjects() {
+    vector<Object> SolarSystem::getObjects() {
         return objects;
     }
 
+    /**
+     * Calculate the total energy of the SolarSystem.
+     *
+     * @return the total energy of the SolarSystem
+     *
+     * @throws None
+     */
     double SolarSystem::totalEnergy() {
         double energy = 0.0;
         for (Object obj : objects) {
             energy += obj.totalEnergy();
         }
         return energy;
+    }
+
+    template<typename Base, typename T>
+    inline bool instanceof(const T*) {
+        return is_base_of<Base, T>::value;
     }

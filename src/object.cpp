@@ -2,6 +2,8 @@
 #include <cmath>
 #include <iostream>
 
+using namespace std;
+
 /**
  * Constructor for Object class.
  *
@@ -15,8 +17,8 @@
  *
  * @throws N/A
  */
-Object::Object(const std::string& n, std::vector<double>& pos, std::vector<double>& spd,
-std::vector<double>& acc, double m) : name(n), position(pos),
+Object::Object(const string& n, vector<double>& pos, vector<double>& spd,
+vector<double>& acc, double m) : name(n), position(pos),
 speed(spd), acceleration(acc), mass(m)
 {
     this->name = n;
@@ -33,7 +35,7 @@ speed(spd), acceleration(acc), mass(m)
  * @return the name of the object
  *
  */
-std::string Object::getName() const {
+string Object::getName() const {
     return name;
 }
 
@@ -42,7 +44,7 @@ std::string Object::getName() const {
  *
  * @return the position of the Object as a vector of doubles
  */
-std::vector<double> Object::getPosition() const {
+vector<double> Object::getPosition() const {
     return position;
 }
 
@@ -51,11 +53,11 @@ std::vector<double> Object::getPosition() const {
  *
  * @return a vector of doubles representing the speed
  */
-std::vector<double> Object::getSpeed() const {
+vector<double> Object::getSpeed() const {
     return speed;
 }
 
-std::vector<double> Object::getAcceleration() const {
+vector<double> Object::getAcceleration() const {
     return acceleration;
 }
 
@@ -69,6 +71,15 @@ double Object::getMass() const {
 }
 
 /**
+ * Calculate and return the area of the object.
+ *
+ * @return the area of the object
+ */
+double Object::getArea() const{
+   return area;
+}
+
+/**
  * Sets the name of the object.
  *
  * @param n the new name to set
@@ -77,7 +88,7 @@ double Object::getMass() const {
  *
  * @throws none
  */
-void Object::setName(const std::string& n) {
+void Object::setName(const string& n) {
     name = n;
 }
 
@@ -86,7 +97,7 @@ void Object::setName(const std::string& n) {
  *
  * @param pos vector of doubles representing the new position
  */
-void Object::setPosition(std::vector<double>& pos) {
+void Object::setPosition(vector<double>& pos) {
     position = pos;
 }
 
@@ -99,7 +110,7 @@ void Object::setPosition(std::vector<double>& pos) {
  *
  * @throws None
  */
-void Object::setSpeed(std::vector<double>& spd) {
+void Object::setSpeed(vector<double>& spd) {
     speed = spd;
 }
 
@@ -108,7 +119,7 @@ void Object::setSpeed(std::vector<double>& spd) {
  *
  * @param acc The acceleration vector to set
  */
-void Object::setAcceleration(std::vector<double>& acc) {
+void Object::setAcceleration(vector<double>& acc) {
     acceleration = acc;
 } 
 
@@ -131,12 +142,12 @@ void Object::setMass(double m) {
  *
  * @throws None
  */
-std::vector<double> Object::gravForce(const Object& obj) {
-    std::vector<double> distVect = distanceVect(obj);
-    std::vector<double> force(3);
-    force[0] -= 6.67408E-11 * mass * obj.getMass() * distVect[0] / pow(distance(obj), 3);
-    force[1] -= 6.67408E-11 * mass * obj.getMass() * distVect[1] / pow(distance(obj), 3);
-    force[2] -= 6.67408E-11 * mass * obj.getMass() * distVect[2] / pow(distance(obj), 3);
+vector<double> Object::gravForce(const Object& obj) {
+    vector<double> distVect = distanceVect(obj);
+    vector<double> force(3);
+    force[0] -= 6.67408E-11L * mass * obj.getMass() * distVect[0] / pow(distance(obj), 3);
+    force[1] -= 6.67408E-11L * mass * obj.getMass() * distVect[1] / pow(distance(obj), 3);
+    force[2] -= 6.67408E-11L * mass * obj.getMass() * distVect[2] / pow(distance(obj), 3);
     return force;
 }
 
@@ -149,10 +160,10 @@ std::vector<double> Object::gravForce(const Object& obj) {
  *
  * @throws ErrorType (if applicable) description of error
  */
-void Object::computeAcceleration(std::vector<Object>& objects) {
-    std::vector<double> accel(3);
+void Object::computeAcceleration(vector<Object>& objects) {
+    vector<double> accel(3);
     for(Object obj : objects) {
-        std::vector<double> force = gravForce(obj);
+        vector<double> force = gravForce(obj);
         for (int l = 0; l<=2; l++) {
             accel[l] += force[l] / mass;
         }
@@ -169,9 +180,9 @@ void Object::computeAcceleration(std::vector<Object>& objects) {
  *
  * @throws None
  */
-std::vector<double> Object::distanceVect(Object obj) {
-    std::vector<double> objPosition = obj.getPosition();
-    std::vector<double> distanceVect;
+vector<double> Object::distanceVect(Object obj) {
+    vector<double> objPosition = obj.getPosition();
+    vector<double> distanceVect;
     distanceVect.push_back(position[0] - objPosition[0]);
     distanceVect.push_back(position[1] - objPosition[1]);
     distanceVect.push_back(position[2] - objPosition[2]);
@@ -187,7 +198,7 @@ std::vector<double> Object::distanceVect(Object obj) {
  * @throws None
  */
 double Object::distance(const Object& obj){
-    std::vector<double> objPosition = obj.getPosition();
+    vector<double> objPosition = obj.getPosition();
     return(sqrt(pow(position[0]-objPosition[0],2)+
             pow(position[1]-objPosition[1],2)+
             pow(position[2]-objPosition[2],2)));
@@ -199,7 +210,7 @@ double Object::distance(const Object& obj){
  * @return the calculated kinetic energy
  */
 double Object::kineticEnergy() {
-    double kinetic = 0.5 * mass * (speed[0] * speed[0] + speed[1] * speed[1] + speed[2] * speed[2]);
+    double kinetic = 0.5L * mass * (speed[0] * speed[0] + speed[1] * speed[1] + speed[2] * speed[2]);
     return kinetic;
 }
 
@@ -212,10 +223,10 @@ double Object::kineticEnergy() {
  *
  * @throws N/A
  */
-void Object::computePotentialEnergy(std::vector<Object>& objects) {
+void Object::computePotentialEnergy(vector<Object>& objects) {
     double potential;
     for (Object obj : objects) {
-        potentialEnergy +=sqrt(gravForce(obj)[0] * gravForce(obj)[0] +
+        potentialEnergy += sqrt(gravForce(obj)[0] * gravForce(obj)[0] +
                             gravForce(obj)[1] * gravForce(obj)[1] +
                             gravForce(obj)[2] * gravForce(obj)[2])*mass*
                             distance(obj);
@@ -240,3 +251,35 @@ double Object::totalEnergy() {
 }
 
 
+/**
+ * Calculate the norm of the cinematic moment for the Object.
+ *
+ * @return the norm of the cinematic moment
+ */
+double Object::normeCinematicMoment()
+{
+   vector<double> position = getPosition();
+   vector<double> vitesse=getSpeed();
+
+   double dx = position[0];
+   double dy = position[1];
+   double dz = position[2];
+   double vx = vitesse[0];
+   double vy = vitesse[1];
+   double vz = vitesse[2];   
+   return getMass() * sqrt((dy*vz-dz*vy)*(dy*vz-dz*vy)+(dz*vx-dx*vz)*(dz*vx-dx*vz)+(dx*vy-dy*vx)*(dx*vy-dy*vx));
+}
+
+/**
+ * Compute the area of the object based on the provided height.
+ *
+ * @param h the height of the object
+ *
+ * @return the computed area of the object
+ *
+ * @throws None
+ */
+void Object::computeArea(double h) 
+{
+   area = 0.5 * h *sqrt(normeCinematicMoment())/getMass();
+}
