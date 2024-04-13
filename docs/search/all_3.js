@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['euler_0',['euler',['../class_solar_system.html#a5ac64abbac1e0a3a3971dd863941e7a5',1,'SolarSystem']]],
-  ['exportdata_1',['exportdata',['../class_solar_system.html#a6ad7c35940b69d05ffd4e4eba49cfb74',1,'SolarSystem']]]
+  ['distance_0',['distance',['../class_object.html#aa86586dd13a83c3eab986d23c7a9168e',1,'Object']]],
+  ['distancevect_1',['distanceVect',['../class_object.html#acf6d314e1c28a5c6510178a3e477b79d',1,'Object']]],
+  ['documentation_2',['Documentation',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]]
 ];

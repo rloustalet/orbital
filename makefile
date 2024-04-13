@@ -3,8 +3,7 @@ CXXFLAGS = -Wall -g
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 TARGET = exec
-
-.PHONY: generate_plots
+GNUPLOT := gnuplot
 
 all: $(TARGET)
 
@@ -34,9 +33,17 @@ clean:
 
 names := $(filter-out $@,$(MAKECMDGOALS))
 
-generate_plots:
-    plot_commands=$$(for name in $(names); do echo "'results/$$name.csv' using 1:2:3 with points"; done); \
-	gnuplot -e -p splot $$plot_commands
+.PHONY: plot3d
+plot3d: check-objects
+	@echo "Tracé du graphique 3D pour les objets: $(OBJECTS)"
+	OBJECTS=$(subst :,\:,$(OBJECTS))
+	$(eval CSV_STR := $(foreach obj,$(OBJECTS),'results/$(obj).csv' using 1:2:3 with points, ))
+	$(GNUPLOT) -e "splot $(CSV_STR)" -p
+
+check-objects:
+ifndef OBJECTS
+	$(error Veuillez spécifier les noms des objets. Utilisation: make plot3d OBJECTS=sun,mars,jupiter)
+endif
 
 make graph:
 	gnuplot graph.gnu -e -p

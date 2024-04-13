@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['object_0',['Object',['../class_object.html#a5763b471e6d6849c80fb24ec6abc6d67',1,'Object']]]
+  ['normecinematicmoment_0',['normeCinematicMoment',['../class_object.html#af238b3f8bc5b0bce47f69874c01419f3',1,'Object']]]
 ];

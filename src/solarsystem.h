@@ -22,7 +22,7 @@ class SolarSystem {
         void printProgress(double percentage, int iterations_so_far, int total_iterations);
 
     public:
-        SolarSystem(const string& n,const vector<Object>& objects); //on a dit que c t des arg de la classe SolarSystem
+        SolarSystem(const string& n,const vector<Object>& objects=vector<Object>());
         void solve(string algo, double h, double t);
         void exportdata(Object obj);
         void verlet(Object& obj1, vector<Object> objects, double h);

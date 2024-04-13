@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['getacceleration_0',['getAcceleration',['../class_object.html#a98f694ea0b13a373db9bae7078d83f54',1,'Object']]],
-  ['getmass_1',['getMass',['../class_object.html#ac53341c11f7435033434bc3b6c908f0c',1,'Object']]],
-  ['getname_2',['getName',['../class_object.html#acb9b466607cb80beaaa30ece2f7f570a',1,'Object']]],
-  ['getobjects_3',['getObjects',['../class_solar_system.html#a2f441a53a6e2005ee524dd39656c218c',1,'SolarSystem']]],
-  ['getposition_4',['getPosition',['../class_object.html#a1824f88b6608b5d52eca17a269511fa5',1,'Object']]],
-  ['getspeed_5',['getSpeed',['../class_object.html#ac0d71479bfc45a64c0e5412f989c9876',1,'Object']]],
-  ['gravforce_6',['gravForce',['../class_object.html#ab31873d20718ea77122a49968237a3f4',1,'Object']]]
+  ['getacceleration_0',['getAcceleration',['../class_object.html#a7f65f7aa656bd700b1d6705f368bb9cb',1,'Object']]],
+  ['getarea_1',['getArea',['../class_object.html#a1fdafaa68899f0399b919c055cbd0945',1,'Object']]],
+  ['getmass_2',['getMass',['../class_object.html#ac53341c11f7435033434bc3b6c908f0c',1,'Object']]],
+  ['getname_3',['getName',['../class_object.html#ade517616d51cd9ab581ec5afeb37b313',1,'Object']]],
+  ['getobjects_4',['getObjects',['../class_solar_system.html#a730352eecbdf826c6b7691ffceec3ed7',1,'SolarSystem']]],
+  ['getposition_5',['getPosition',['../class_object.html#abf3a0a4e66140a6b094076534bcec531',1,'Object']]],
+  ['getspeed_6',['getSpeed',['../class_object.html#a442823cd9fdb65ab1d8ef679b4a6f105',1,'Object']]],
+  ['gravforce_7',['gravForce',['../class_object.html#a15fa0733a6d80284d1b3cc8667f66736',1,'Object']]]
 ];

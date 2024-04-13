@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['planet_0',['Planet',['../class_planet.html',1,'']]]
+  ['solarsystem_0',['SolarSystem',['../class_solar_system.html',1,'']]]
 ];

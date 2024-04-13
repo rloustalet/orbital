@@ -8,10 +8,7 @@ int main(){
     long int h = 1 * 24 * 3600L;
     long int t =  30 * 365 * 24 * 3600L;
 
-    std::vector<Object> objects;
-
-
-    SolarSystem solarsystem("solar_system",objects);
+    SolarSystem solarsystem("solar_system");
     solarsystem.addObjectFromHorizons("Sun");
     solarsystem.addObjectFromHorizons("Mercury");
     solarsystem.addObjectFromHorizons("Venus");

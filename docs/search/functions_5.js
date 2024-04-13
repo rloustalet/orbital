@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isstar_0',['isStar',['../class_solar_system.html#af01012389e01c5f9d560401c0f5fe1ae',1,'SolarSystem']]]
+  ['instanceof_0',['instanceof',['../solarsystem_8cpp.html#a7cc95dc2709c50a9803dd5d432fefce5',1,'solarsystem.cpp']]]
 ];

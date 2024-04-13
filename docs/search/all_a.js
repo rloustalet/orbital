@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rk4_0',['RK4',['../class_solar_system.html#a798a1c1b3dfd0b6030a016ff2803dd46',1,'SolarSystem']]]
+  ['normecinematicmoment_0',['normeCinematicMoment',['../class_object.html#af238b3f8bc5b0bce47f69874c01419f3',1,'Object']]]
 ];
