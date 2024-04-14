@@ -40,7 +40,15 @@ Pour décrire ce script nous pouvons remarquer une première instance de la clas
 Lorsque l'on exécute le programme on voit une barre de progression apparaître comme ci-dessous qui vous indique bien sûr sur la progression, le temps écoulé, le temps d'exécution prédit et le temps d'exécution par itération temporelle.
 `100% [||||||||||||||||||||||||||||||||||||||||||||||||||] 21.94s/21.94s, 2ms/iter`
 
+Lorsque le programme est lancé, il génère un fichier pour chaque objet de la liste `objects` lesquels contiennent 9 colonnes (X Y   Z   VX  VY  VZ  Etot(objet) Aire parcourue  Norme Moment cinétique).
+Un autre fichier est généré il porte le nom de votre système (nom de l'argument name de l'instance Solar System), celui-ci contient l'énergie totale du système.
+
+
 Le fichier main.cpp se trouve à la racine `/` du projet vous pouvez le modifier à volonté pour faire les simulations que vous souhaitez. La commande `make run` vous permet de compiler et d'exécuter ce script.
+
+La commande `make graph` permet d'afficher les position des objets sur l'ensemble du temps d'intégration (le fichier graph.gnu doit-être modifié à la convenance).
+
+La commande `disp_tot_energy` permet d'afficher l'évolution de l'énergie totale du système sur l'ensemble du temps d'intégration.
 
 ## Documentation
 

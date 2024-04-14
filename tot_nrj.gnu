@@ -1,0 +1,1 @@
+plot 'results/solar_system.csv'

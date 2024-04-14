@@ -28,9 +28,6 @@ run:
 documentation:
 	doxygen docs/Doxyfile
 
-clean:
-	rm -f $(OBJ) $(TARGET)
-
 names := $(filter-out $@,$(MAKECMDGOALS))
 
 .PHONY: plot3d
@@ -45,6 +42,9 @@ ifndef OBJECTS
 	$(error Veuillez spécifier les noms des objets. Utilisation: make plot3d OBJECTS=sun,mars,jupiter)
 endif
 
-make graph:
+graph:
 	gnuplot graph.gnu -e -p
- 
+
+
+ disp_tot_energy:
+	gnuplot tot_nrj.gnu -e -p

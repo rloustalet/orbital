@@ -1,2 +1,0 @@
-splot 'results/generate_plots.csv' using 1:2:3 with points
-splot 'results/sun.csv' using 1:2:3 with points
