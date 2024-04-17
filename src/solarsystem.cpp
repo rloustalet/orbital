@@ -16,9 +16,8 @@ using namespace std;
  * @param n The name of the solar system
  * @param objs Vector of objects in the solar system
  */
-SolarSystem::SolarSystem(const string& n,const vector<Object>& objs): name(n), objects(objs) {
+SolarSystem::SolarSystem(const string& n): name(n) {
     this->name=n;
-    this->objects=objs;
 }
 
 /**
@@ -589,7 +588,19 @@ vector<double> SolarSystem::processPosition(const string& response) {
         return energy;
     }
 
-    template<typename Base, typename T>
-    inline bool instanceof(const T*) {
-        return is_base_of<Base, T>::value;
+    /**
+     * Adds a new object to the SolarSystem with the given name, position, speed, acceleration, and mass.
+     *
+     * @param name The name of the object.
+     * @param position The position of the object as a vector of three double values.
+     * @param speed The speed of the object as a vector of three double values.
+     * @param acceleration The acceleration of the object as a vector of three double values.
+     * @param mass The mass of the object.
+     *
+     * @throws None.
+     */
+    void SolarSystem::addObject(string name, vector<double> position, vector<double> speed, vector<double> acceleration, double mass){
+        Object newobj(name, position, speed, acceleration, mass);
+        objects.push_back(newobj);
     }
+

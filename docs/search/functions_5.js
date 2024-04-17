@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instanceof_0',['instanceof',['../solarsystem_8cpp.html#a7cc95dc2709c50a9803dd5d432fefce5',1,'solarsystem.cpp']]]
+  ['kineticenergy_0',['kineticEnergy',['../class_object.html#ad07303e0b982d0fa785a13b440a909da',1,'Object']]]
 ];
