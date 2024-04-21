@@ -23,8 +23,8 @@ class SolarSystem {
 
     public:
         SolarSystem(const string& n);
-        void solve(string algo, double h, double t);
-        void exportdata(Object obj);
+        void solve(string algo, double h, double t, bool export_data = true);
+        void exportdata(Object obj, double time);
         void verlet(Object& obj1, vector<Object> objects, double h);
         void RK4(Object& obj1, vector<Object> objects, double h);
         void euler(Object& obj1, vector<Object> objects, double h);

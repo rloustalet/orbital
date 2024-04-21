@@ -75,35 +75,35 @@ static size_t writeCallback(void *contents, size_t size, size_t nmemb, string *d
     return totalSize;
 }
 
-/**
- * Gives the position of the Earth and the Sun at time t.
- *
- * @param algo the algorithm to be used
- * @param h the step size
- * @param t the time
- *
- * @return description of return value
- *
- * @throws ErrorType description of error
- */
-void SolarSystem::solve(string algo, double h,double t){
-    //donne la positon de la terre et du soleil à t
-    string filename = "results/" + name + ".csv";
-    if (remove(filename.c_str()) != 0) {
-        cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << endl;
-    }
-    else {
-        cout << "Le fichier " << filename << " a été supprimé avec succès." << endl;
-    }
-    for (Object obj : objects) {
-        string filename ="results/" + obj.getName() + ".csv";
-        if (remove(filename.c_str()) != 0) {
-        cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << endl;
-    } else {
-        cout << "Le fichier " << filename << " a été supprimé avec succès." << endl;
-    }
-    }
 
+/**
+ * Solves the solar system simulation using the specified algorithm.
+ *
+ * @param algo the algorithm to use for solving the system
+ * @param h the step size
+ * @param t the total time
+ * @param export_data flag indicating whether to export data default true
+ *
+ * @throws ErrorType if the algorithm does not exist
+ */
+void SolarSystem::solve(string algo, double h, double t, bool export_data){
+    if (export_data) {
+        string filename = "results/" + name + ".csv";
+        if (remove(filename.c_str()) != 0) {
+            cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << endl;
+        }
+        else {
+            cout << "Le fichier " << filename << " a été supprimé avec succès." << endl;
+        }
+        for (Object obj : objects) {
+            string filename ="results/" + obj.getName() + ".csv";
+            if (remove(filename.c_str()) != 0) {
+            cout << "Le fichier " << filename << " n'existe pas ou n'a pas pu être supprimé." << endl;
+        } else {
+            cout << "Le fichier " << filename << " a été supprimé avec succès." << endl;
+        }
+        }
+    }
     double steps=t/h;
     transform(algo.begin(), algo.end(), algo.begin(), ::tolower);
 
@@ -113,7 +113,9 @@ void SolarSystem::solve(string algo, double h,double t){
         for (int j=0;j<objects.size();j++) {
             vector<Object> subobjects = objects;
             subobjects.erase(subobjects.begin() + j);
-            exportdata(objects[j]);
+            if (export_data){
+                exportdata(objects[j], i*h);
+            }
             if (algo == "rk4") {
                 RK4(objects[j], subobjects, h);
             }
@@ -127,16 +129,18 @@ void SolarSystem::solve(string algo, double h,double t){
                 cout << "l'algorithme n'existe pas" << endl;
             }
             objects[j].computeArea(h);
-            objects[j].computePotentialEnergy(subobjects);
             objects[j].clearPotentialEnergy();
+            objects[j].computePotentialEnergy(subobjects);
 
         }
-        ofstream outfile;
-        string filename = "results/" + name + ".csv";
-        outfile.open(filename, ios_base::app);
-        outfile << totalEnergy() << endl;
-        outfile.close();
 
+        if (export_data) {
+            ofstream outfile;
+            string filename = "results/" + name + ".csv";
+            outfile.open(filename, ios_base::app);
+            outfile << i*h << " " << totalEnergy() << endl;
+            outfile.close();
+        }
 
     }
 }
@@ -150,11 +154,11 @@ void SolarSystem::solve(string algo, double h,double t){
  *
  * @throws ofstream::failure if the file opening fails
  */
-void SolarSystem::exportdata(Object obj){
+void SolarSystem::exportdata(Object obj, double time){
     ofstream outfile;
     string filename = "results/" + obj.getName() + ".csv";
     outfile.open(filename, ios_base::app);
-    outfile << obj.getPosition()[0] << " " 
+    outfile << time << " " << obj.getPosition()[0] << " " 
     << obj.getPosition()[1] << " " << obj.getPosition()[2] << " " 
     << obj.getSpeed()[0] << " " 
     << obj.getSpeed()[1] << " " << obj.getSpeed()[2] << " " << obj.totalEnergy() << 

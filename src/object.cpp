@@ -57,6 +57,12 @@ vector<double> Object::getSpeed() const {
     return speed;
 }
 
+
+/**
+ * Get the acceleration of the Object.
+ *
+ * @return the acceleration of the Object as a vector of doubles
+ */
 vector<double> Object::getAcceleration() const {
     return acceleration;
 }
@@ -210,8 +216,7 @@ double Object::distance(const Object& obj){
  * @return the calculated kinetic energy
  */
 double Object::kineticEnergy() {
-    double kinetic = 0.5L * mass * (speed[0] * speed[0] + speed[1] * speed[1] + speed[2] * speed[2]);
-    return kinetic;
+    return 0.5 * mass * (pow(speed[0], 2) + pow(speed[1], 2) + pow(speed[2], 2));
 }
 
 /**
@@ -226,9 +231,9 @@ double Object::kineticEnergy() {
 void Object::computePotentialEnergy(vector<Object>& objects) {
     double potential;
     for (Object obj : objects) {
-        potentialEnergy += sqrt(gravForce(obj)[0] * gravForce(obj)[0] +
-                            gravForce(obj)[1] * gravForce(obj)[1] +
-                            gravForce(obj)[2] * gravForce(obj)[2])*
+        potentialEnergy += sqrt(pow(gravForce(obj)[0], 2) +
+                            pow(gravForce(obj)[1], 2) +
+                            pow(gravForce(obj)[2], 2))*
                             distance(obj);
     }
 }
