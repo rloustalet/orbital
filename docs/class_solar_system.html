@@ -14,6 +14,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -83,10 +90,10 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8fe39a2c75708a724f405cf21babc3d" id="r_ae8fe39a2c75708a724f405cf21babc3d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8fe39a2c75708a724f405cf21babc3d">SolarSystem</a> (const string &amp;n)</td></tr>
 <tr class="separator:ae8fe39a2c75708a724f405cf21babc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a563104e38eb3da846be0fd10d9da0dc3" id="r_a563104e38eb3da846be0fd10d9da0dc3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a563104e38eb3da846be0fd10d9da0dc3">solve</a> (string algo, double h, double t)</td></tr>
-<tr class="separator:a563104e38eb3da846be0fd10d9da0dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ad7c35940b69d05ffd4e4eba49cfb74" id="r_a6ad7c35940b69d05ffd4e4eba49cfb74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ad7c35940b69d05ffd4e4eba49cfb74">exportdata</a> (<a class="el" href="class_object.html">Object</a> obj)</td></tr>
-<tr class="separator:a6ad7c35940b69d05ffd4e4eba49cfb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3fe97e89018aa422a8d775f6cf9040c" id="r_aa3fe97e89018aa422a8d775f6cf9040c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3fe97e89018aa422a8d775f6cf9040c">solve</a> (string algo, double h, double t, bool export_data=true)</td></tr>
+<tr class="separator:aa3fe97e89018aa422a8d775f6cf9040c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeefe258456fe5a541acea14ad97f663d" id="r_aeefe258456fe5a541acea14ad97f663d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeefe258456fe5a541acea14ad97f663d">exportdata</a> (<a class="el" href="class_object.html">Object</a> obj, double time)</td></tr>
+<tr class="separator:aeefe258456fe5a541acea14ad97f663d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4c3d9625f58f7cd21ffe98c396fb5ca" id="r_aa4c3d9625f58f7cd21ffe98c396fb5ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4c3d9625f58f7cd21ffe98c396fb5ca">verlet</a> (<a class="el" href="class_object.html">Object</a> &amp;obj1, vector&lt; <a class="el" href="class_object.html">Object</a> &gt; objects, double h)</td></tr>
 <tr class="separator:aa4c3d9625f58f7cd21ffe98c396fb5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a798a1c1b3dfd0b6030a016ff2803dd46" id="r_a798a1c1b3dfd0b6030a016ff2803dd46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a798a1c1b3dfd0b6030a016ff2803dd46">RK4</a> (<a class="el" href="class_object.html">Object</a> &amp;obj1, vector&lt; <a class="el" href="class_object.html">Object</a> &gt; objects, double h)</td></tr>
@@ -237,6 +244,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Updates the position and speed of an object using the Euler method.</p>
+<p>\( x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj1</td><td>The object to update </td></tr>
@@ -255,8 +263,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ad7c35940b69d05ffd4e4eba49cfb74" name="a6ad7c35940b69d05ffd4e4eba49cfb74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ad7c35940b69d05ffd4e4eba49cfb74">&#9670;&#160;</a></span>exportdata()</h2>
+<a id="aeefe258456fe5a541acea14ad97f663d" name="aeefe258456fe5a541acea14ad97f663d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeefe258456fe5a541acea14ad97f663d">&#9670;&#160;</a></span>exportdata()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,8 +272,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void SolarSystem::exportdata </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_object.html">Object</a></td>          <td class="paramname"><span class="paramname"><em>obj</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_object.html">Object</a></td>          <td class="paramname"><span class="paramname"><em>obj</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>time</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -329,6 +341,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Runge-Kutta 4th Order method implementation for solving differential equations.</p>
+<p>\( k_{1}=f(t_{n},i_{n},v_{n}) ; l_{1}=g(t_{n},i_{n},v_{n}) \)</p>
+<p>\( k_{2}=f(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{1},v_{n}+\frac{h}{2}*l_{1}) ; 
+l_{2}=g(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{1},v_{n}+\frac{h}{2}*l_{1}) \)</p>
+<p>\( k_{3}=f(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{2},v_{n}+\frac{h}{2}*l_{2}) ; 
+l_{3}=g(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{2},v_{n}+\frac{h}{2}*l_{2}) \)</p>
+<p>\( k_{4}=f(t_{n}+h,i_{n}+h*k_{3},v_{n}+h*l_{2});l_{4}=g(t_{n}+h,i_{n}+h*k_{3},v_{n}+h*l_{2}) \)</p>
+<p>\( i_{n+1}=i_{n}+h/6*(k_{1}+2*k_{2}+2*k_{3}+k_{4}) ; v_{n+1}=v_{n}+h/6*(l_{1}+2*l_{2}+2*l_{3}+l_{4}) \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj1</td><td>The main object for which the RK4 method is applied </td></tr>
@@ -347,8 +366,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a563104e38eb3da846be0fd10d9da0dc3" name="a563104e38eb3da846be0fd10d9da0dc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a563104e38eb3da846be0fd10d9da0dc3">&#9670;&#160;</a></span>solve()</h2>
+<a id="aa3fe97e89018aa422a8d775f6cf9040c" name="aa3fe97e89018aa422a8d775f6cf9040c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3fe97e89018aa422a8d775f6cf9040c">&#9670;&#160;</a></span>solve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,23 +385,28 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>t</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>export_data</em><span class="paramdefsep"> = </span><span class="paramdefval">true</span></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Gives the position of the Earth and the Sun at time t.</p>
+<p>Solves the solar system simulation using the specified algorithm.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">algo</td><td>the algorithm to be used </td></tr>
+    <tr><td class="paramname">algo</td><td>the algorithm to use for solving the system </td></tr>
     <tr><td class="paramname">h</td><td>the step size </td></tr>
-    <tr><td class="paramname">t</td><td>the time</td></tr>
+    <tr><td class="paramname">t</td><td>the total time </td></tr>
+    <tr><td class="paramname">export_data</td><td>flag indicating whether to export data default true</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>description of return value</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">ErrorType</td><td>description of error </td></tr>
+    <tr><td class="paramname">ErrorType</td><td>if the algorithm does not exist </td></tr>
   </table>
   </dd>
 </dl>
@@ -438,6 +462,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Perform the Verlet integration to update the position and velocity of the given object.</p>
+<p>\( x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \) \( v(t+h)=v(t+\frac{h}{2})+\frac{a(t+h).h}{2} \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj1</td><td>The object for which the position and velocity are to be updated. </td></tr>

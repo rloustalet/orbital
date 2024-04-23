@@ -168,6 +168,8 @@ void SolarSystem::exportdata(Object obj, double time){
 
 /**
  * Updates the position and speed of an object using the Euler method.
+ * 
+ * \f$ x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \f$
  *
  * @param obj1 The object to update
  * @param objects Other objects influencing the object
@@ -196,6 +198,9 @@ obj1.setSpeed(vitesse);
 
 /**
  * Perform the Verlet integration to update the position and velocity of the given object.
+ * 
+ * \f$ x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \f$
+ * \f$ v(t+h)=v(t+\frac{h}{2})+\frac{a(t+h).h}{2} \f$
  *
  * @param obj1 The object for which the position and velocity are to be updated.
  * @param objects The vector of other objects affecting the given object.
@@ -207,10 +212,6 @@ obj1.setSpeed(vitesse);
  */
 void SolarSystem::verlet(Object &obj1, vector<Object> objects, double h)
 {
-//x(t+h)=x(t)+v(t)*h+1/2*a(t)*h**2
-//v(t+h/2)=v(t)+a(t)*h/2
-//a(t+h)=
-//v(t+h)=v(t+h/2)+a(t+h)*h/2
 vector<double>position = obj1.getPosition();
 vector<double>vitesse = obj1.getSpeed();
 vector<double> acceleration = obj1.getAcceleration();
@@ -231,6 +232,19 @@ obj1.setSpeed(vitesse);
 
 /**
  * Runge-Kutta 4th Order method implementation for solving differential equations.
+ * 
+ * \f$ k_{1}=f(t_{n},i_{n},v_{n}) ; l_{1}=g(t_{n},i_{n},v_{n}) \f$
+ * 
+ * \f$ k_{2}=f(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{1},v_{n}+\frac{h}{2}*l_{1}) ; 
+ * l_{2}=g(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{1},v_{n}+\frac{h}{2}*l_{1}) \f$
+ * 
+ * \f$ k_{3}=f(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{2},v_{n}+\frac{h}{2}*l_{2}) ; 
+ * l_{3}=g(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{2},v_{n}+\frac{h}{2}*l_{2}) \f$
+ * 
+ * \f$ k_{4}=f(t_{n}+h,i_{n}+h*k_{3},v_{n}+h*l_{2});l_{4}=g(t_{n}+h,i_{n}+h*k_{3},v_{n}+h*l_{2}) \f$
+ * 
+ * \f$ i_{n+1}=i_{n}+h/6*(k_{1}+2*k_{2}+2*k_{3}+k_{4}) ; v_{n+1}=v_{n}+h/6*(l_{1}+2*l_{2}+2*l_{3}+l_{4}) \f$
+ * 
  *
  * @param obj1 The main object for which the RK4 method is applied
  * @param objects Other objects influencing the main object

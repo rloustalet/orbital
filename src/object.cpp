@@ -141,6 +141,10 @@ void Object::setMass(double m) {
 
 /**
  * Calculate gravitational force between two objects.
+ * 
+ * \f$ \overrightarrow{F}_{i\overrightarrow{}j} = 
+ * - \frac{G m_{i}m_{j}}{{||\overrightarrow{r_{j}}-\overrightarrow{r_{i}}||}^3}
+ * {(\overrightarrow{r_{j}}-\overrightarrow{r_{i}})} \f$
  *
  * @param obj The other object
  *
@@ -159,6 +163,9 @@ vector<double> Object::gravForce(const Object& obj) {
 
 /**
  * Compute the acceleration of the object based on the gravitational force from other objects.
+ * 
+ * \f$ \overrightarrow{a}_{i} =\frac{\sum^{N}_{j=1,j \neq i}
+ * \overrightarrow{F}_{i\overrightarrow{}{j}}}{m_{i}} \f$
  *
  * @param objects the vector of other Object instances
  *
@@ -179,6 +186,8 @@ void Object::computeAcceleration(vector<Object>& objects) {
 
 /**
  * Generates a vector representing the distance between the current object and the passed object.
+ * 
+ * \f$ \overrightarrow{r_{j}}-\overrightarrow{r_{i}} \f$
  *
  * @param obj The object to calculate the distance from.
  *
@@ -196,6 +205,8 @@ vector<double> Object::distanceVect(Object obj) {
 }
 /**
  * Calculates the distance between this Object and the input Object.
+ * 
+ * \f$ ||\overrightarrow{r_{j}}-\overrightarrow{r_{i}}|| \f$
  *
  * @param obj The Object to calculate the distance to.
  *
@@ -212,6 +223,8 @@ double Object::distance(const Object& obj){
 
 /**
  * Calculate the kinetic energy of the object.
+ * 
+ * \f$ E_{cinétique} ={\frac{1}{2}{m}}{\overrightarrow{v}^2} \f$
  *
  * @return the calculated kinetic energy
  */
@@ -221,6 +234,8 @@ double Object::kineticEnergy() {
 
 /**
  * Compute the potential energy of the objects in the given vector.
+ * 
+ * \f$ E_{potentielle} ={||\overrightarrow{F}||}*{||\overrightarrow{r}||} \f$
  *
  * @param objects vector of Object instances for which potential energy needs to be computed
  *
@@ -258,6 +273,8 @@ double Object::totalEnergy() {
 
 /**
  * Calculate the norm of the cinematic moment for the Object.
+ * 
+ * \f$ {\overrightarrow{L}= m*\overrightarrow{d}}\wedge{\overrightarrow{v}} \f$
  *
  * @return the norm of the cinematic moment
  */
@@ -277,6 +294,8 @@ double Object::normeCinematicMoment()
 
 /**
  * Compute the area of the object based on the provided height.
+ * 
+ * \f$ Aire =\frac{1}{2}*\frac{||\overrightarrow{L}||}{m}*t \f$
  *
  * @param h the height of the object
  *

@@ -14,6 +14,13 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -215,6 +222,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Compute the acceleration of the object based on the gravitational force from other objects.</p>
+<p>\( \overrightarrow{a}_{i} =\frac{\sum^{N}_{j=1,j \neq i}
+\overrightarrow{F}_{i\overrightarrow{}{j}}}{m_{i}} \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">objects</td><td>the vector of other <a class="el" href="class_object.html">Object</a> instances</td></tr>
@@ -246,6 +255,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Compute the area of the object based on the provided height.</p>
+<p>\( Aire =\frac{1}{2}*\frac{||\overrightarrow{L}||}{m}*t \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">h</td><td>the height of the object</td></tr>
@@ -277,6 +287,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Compute the potential energy of the objects in the given vector.</p>
+<p>\( E_{potentielle} ={||\overrightarrow{F}||}*{||\overrightarrow{r}||} \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">objects</td><td>vector of <a class="el" href="class_object.html">Object</a> instances for which potential energy needs to be computed</td></tr>
@@ -308,6 +319,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculates the distance between this <a class="el" href="class_object.html">Object</a> and the input <a class="el" href="class_object.html">Object</a>.</p>
+<p>\( ||\overrightarrow{r_{j}}-\overrightarrow{r_{i}}|| \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>The <a class="el" href="class_object.html">Object</a> to calculate the distance to.</td></tr>
@@ -339,6 +351,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Generates a vector representing the distance between the current object and the passed object.</p>
+<p>\( \overrightarrow{r_{j}}-\overrightarrow{r_{i}} \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>The object to calculate the distance from.</td></tr>
@@ -369,6 +382,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the acceleration of the <a class="el" href="class_object.html">Object</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>the acceleration of the <a class="el" href="class_object.html">Object</a> as a vector of doubles </dd></dl>
 
 </div>
 </div>
@@ -482,6 +497,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculate gravitational force between two objects.</p>
+<p>\( \overrightarrow{F}_{i\overrightarrow{}j} = 
+- \frac{G m_{i}m_{j}}{{||\overrightarrow{r_{j}}-\overrightarrow{r_{i}}||}^3}
+{(\overrightarrow{r_{j}}-\overrightarrow{r_{i}})} \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj</td><td>The other object</td></tr>
@@ -513,6 +531,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculate the kinetic energy of the object.</p>
+<p>\( E_{cinétique} ={\frac{1}{2}{m}}{\overrightarrow{v}^2} \)</p>
 <dl class="section return"><dt>Returns</dt><dd>the calculated kinetic energy </dd></dl>
 
 </div>
@@ -532,6 +551,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculate the norm of the cinematic moment for the <a class="el" href="class_object.html">Object</a>.</p>
+<p>\( {\overrightarrow{L}= m*\overrightarrow{d}}\wedge{\overrightarrow{v}} \)</p>
 <dl class="section return"><dt>Returns</dt><dd>the norm of the cinematic moment </dd></dl>
 
 </div>

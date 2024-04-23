@@ -38,4 +38,5 @@
 *.vscode
 *.csv
 *.log
+*.png
 docs/latex

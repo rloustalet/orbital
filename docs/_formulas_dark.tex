@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\color{white}
+\pagecolor{black}
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+
+\pagestyle{empty}
+\begin{document}
+$ \overrightarrow{F}_{i\overrightarrow{}j} = 
+- \frac{G m_{i}m_{j}}{{||\overrightarrow{r_{j}}-\overrightarrow{r_{i}}||}^3}
+{(\overrightarrow{r_{j}}-\overrightarrow{r_{i}})} $
+\pagebreak
+
+$ \overrightarrow{a}_{i} =\frac{\sum^{N}_{j=1,j \neq i}
+\overrightarrow{F}_{i\overrightarrow{}{j}}}{m_{i}} $
+\pagebreak
+
+$ \overrightarrow{r_{j}}-\overrightarrow{r_{i}} $
+\pagebreak
+
+$ ||\overrightarrow{r_{j}}-\overrightarrow{r_{i}}|| $
+\pagebreak
+
+$ E_{cinétique} ={\frac{1}{2}{m}}{\overrightarrow{v}^2} $
+\pagebreak
+
+$ E_{potentielle} ={||\overrightarrow{F}||}*{||\overrightarrow{r}||} $
+\pagebreak
+
+$ {\overrightarrow{L}= m*\overrightarrow{d}}\wedge{\overrightarrow{v}} $
+\pagebreak
+
+$ Aire =\frac{1}{2}*\frac{||\overrightarrow{L}||}{m}*t $
+\pagebreak
+
+\end{document}

@@ -1,4 +1,4 @@
-# Astro Toolbox
+# Orbital
  [![GitHub License](https://img.shields.io/github/license/rloustalet/orbital)
 ](https://simple.wikipedia.org/wiki/MIT_License) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/rloustalet/orbital/main)
 

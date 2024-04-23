@@ -6,5 +6,5 @@ var searchData=
   ['setposition_3',['setPosition',['../class_object.html#aa4684fce56ba83504c87f059563e339e',1,'Object']]],
   ['setspeed_4',['setSpeed',['../class_object.html#ac367655ecaa025db1b2d6047d3bc6dfa',1,'Object']]],
   ['solarsystem_5',['SolarSystem',['../class_solar_system.html#ae8fe39a2c75708a724f405cf21babc3d',1,'SolarSystem']]],
-  ['solve_6',['solve',['../class_solar_system.html#a563104e38eb3da846be0fd10d9da0dc3',1,'SolarSystem']]]
+  ['solve_6',['solve',['../class_solar_system.html#aa3fe97e89018aa422a8d775f6cf9040c',1,'SolarSystem']]]
 ];

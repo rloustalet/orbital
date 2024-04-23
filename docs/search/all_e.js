@@ -8,5 +8,5 @@ var searchData=
   ['solarsystem_5',['SolarSystem',['../class_solar_system.html',1,'SolarSystem'],['../class_solar_system.html#ae8fe39a2c75708a724f405cf21babc3d',1,'SolarSystem::SolarSystem()']]],
   ['solarsystem_2ecpp_6',['solarsystem.cpp',['../solarsystem_8cpp.html',1,'']]],
   ['solarsystem_2eh_7',['solarsystem.h',['../solarsystem_8h.html',1,'']]],
-  ['solve_8',['solve',['../class_solar_system.html#a563104e38eb3da846be0fd10d9da0dc3',1,'SolarSystem']]]
+  ['solve_8',['solve',['../class_solar_system.html#aa3fe97e89018aa422a8d775f6cf9040c',1,'SolarSystem']]]
 ];
