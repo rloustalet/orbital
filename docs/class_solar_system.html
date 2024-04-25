@@ -245,7 +245,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Updates the position and speed of an object using the Euler method.</p>
-<p>\( v(t+h)=v(t)+a(t).h \) \( x(t+h)=x(t)+v(t).h \)</p>
+<p>\( v(t+h)=v(t)+a(t).h \)</p>
+<p>\( x(t+h)=x(t)+v(t).h \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj1</td><td>The object to update </td></tr>
@@ -463,7 +464,8 @@ l_{3}=g(t_{n}+\frac{h}{2},i_{n}+\frac{h}{2}*k_{2},v_{n}+\frac{h}{2}*l_{2}) \)</p
       </table>
 </div><div class="memdoc">
 <p>Perform the Verlet integration to update the position and velocity of the given object.</p>
-<p>\( x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \) \( v(t+h)=v(t+\frac{h}{2})+\frac{a(t+h).h}{2} \)</p>
+<p>\( x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \)</p>
+<p>\( v(t+h)=v(t+\frac{h}{2})+\frac{a(t+h).h}{2} \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj1</td><td>The object for which the position and velocity are to be updated. </td></tr>
