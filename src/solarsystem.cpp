@@ -169,7 +169,8 @@ void SolarSystem::exportdata(Object obj, double time){
 /**
  * Updates the position and speed of an object using the Euler method.
  * 
- * \f$ x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \f$
+ * \f$ v(t+h)=v(t)+a(t).h \f$
+ * \f$ x(t+h)=x(t)+v(t).h \f$
  *
  * @param obj1 The object to update
  * @param objects Other objects influencing the object
