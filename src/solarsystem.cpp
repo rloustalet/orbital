@@ -353,7 +353,9 @@ obj1.setSpeed(vitesse);
 }
 
 /**
- * Adds an object to the Solar System based on the name provided.
+ * Adds an object to the Solar System based on the name provided from Hozizons API.
+ * 
+ * <a href="https://ssd.jpl.nasa.gov/horizons/">JPL Horizons</a> 
  *
  * @param name the name of the object to be added
  *

@@ -203,7 +203,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Adds an object to the Solar System based on the name provided.</p>
+<p>Adds an object to the Solar System based on the name provided from Hozizons API.</p>
+<p><a href="https://ssd.jpl.nasa.gov/horizons/">JPL Horizons</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>the name of the object to be added</td></tr>
@@ -244,7 +245,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Updates the position and speed of an object using the Euler method.</p>
-<p>\( x(t+h)=x(t)+v(t).h+\frac{1}{2}{a(t)}.h^2 \)</p>
+<p>\( v(t+h)=v(t)+a(t).h \) \( x(t+h)=x(t)+v(t).h \)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">obj1</td><td>The object to update </td></tr>
