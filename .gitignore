@@ -38,5 +38,5 @@
 *.vscode
 *.csv
 *.log
-*.png
+orbital.png
 docs/latex

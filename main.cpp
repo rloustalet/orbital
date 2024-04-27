@@ -39,21 +39,21 @@ int main(){
     accelSun.push_back(0);
 
     //long int h = 0.001 * 24 * 3600L; // pas de temps
-    double h=24 * 3600L;
-    long int t =  60 * 365 * 24 * 3600L; // temps d'intégartion
+    double h=0.5 * 24 * 3600L;
+    long int t =  2 * 365 * 24 * 3600L; // temps d'intégartion
 
-    //solarsystem.addObject("Sun", positionSun, speedSun, accelSun, 1.9891E30); // on ajoute les objets au système par les vecteurs
-    //solarsystem.addObject("Earth", positionEarth, speedEarth, accelEarth, 5.9736E24);
+    solarsystem.addObject("Sun", positionSun, speedSun, accelSun, 1.9891E30); // on ajoute les objets au système par les vecteurs
+    solarsystem.addObject("Earth", positionEarth, speedEarth, accelEarth, 5.9736E24);
     
-    solarsystem.addObjectFromHorizons("Sun"); // on ajoute les objets au système par les noms et une requête à Horizons
-    solarsystem.addObjectFromHorizons("Mercury");
-    solarsystem.addObjectFromHorizons("Venus");
-    solarsystem.addObjectFromHorizons("Earth");
-    solarsystem.addObjectFromHorizons("Mars");
-    solarsystem.addObjectFromHorizons("Jupiter");
-    solarsystem.addObjectFromHorizons("Saturn");
-    solarsystem.addObjectFromHorizons("Uranus");
-    solarsystem.addObjectFromHorizons("Neptune");
+    //solarsystem.addObjectFromHorizons("Sun"); // on ajoute les objets au système par les noms et une requête à Horizons
+    //solarsystem.addObjectFromHorizons("Mercury");
+    //solarsystem.addObjectFromHorizons("Venus");
+    //solarsystem.addObjectFromHorizons("Earth");
+    //solarsystem.addObjectFromHorizons("Mars");
+    //solarsystem.addObjectFromHorizons("Jupiter");
+    //solarsystem.addObjectFromHorizons("Saturn");
+    //solarsystem.addObjectFromHorizons("Uranus");
+    //solarsystem.addObjectFromHorizons("Neptune");
     //solarsystem.addObjectFromHorizons("moon");
     //solarsystem.addObjectFromHorizons("io");
     //solarsystem.addObjectFromHorizons("europa");
